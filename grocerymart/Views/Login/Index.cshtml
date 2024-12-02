@@ -13,13 +13,12 @@
     <div class="auth__content">
         <div class="auth__content--inner">
             <app-logo></app-logo>
-            <h1 class="auth__title">Hello Again!</h1>
-            <p class="auth__desc">Welcome back to sign in. As a returning customer, you have access to your previously
-                saved all information.</p>
+            <h1 class="auth__title">Welcome Back!</h1>
+            <p class="auth__desc">Sign in to access your saved information and continue your journey with us.</p>
             <div class="form">
                 <div class="form__group">
                     <div class="form__text">
-                        <input type="text" placeholder="Email" autocomplete="off">
+                        <input type="email" placeholder="Email Address" autocomplete="off">
                         <img src="~/assets/icons/mail.svg" alt="">
                     </div>
                 </div>
@@ -32,21 +31,18 @@
             </div>
             <div class="row">
                 <label class="form__checkbox">
-                    <input type="checkbox" class="form__checkbox-input"/>
-                    <span class="form__checkbox-label">Set as default card</span>
+                    <input type="checkbox" class="form__checkbox-input">
+                    <span class="form__checkbox-label">Remember Me</span>
                 </label>
-                <a href="#" class="auth__link">Forgot password?</a>
+                <a href="#" class="auth__link">Forgot Password?</a>
             </div>
-            <div class="btn">
-                Sign In
-            </div>
-            <div class="btn-google">
+            <button class="btn">Sign In</button>
+            <button class="btn-google">
                 <img class="img-google" src="~/assets/icons/google.svg" alt="">
-                Sign In With Google
-            </div>
+                Sign In with Google
+            </button>
             <p class="auth__text">
-                Don’t have an account yet?
-                @* <a class="auth__link" asp-controller="Account" asp-action="SignUp">Sign Up</a> *@
+                Don’t have an account yet? <span>Create one</span>.
             </p>
         </div>
     </div>
