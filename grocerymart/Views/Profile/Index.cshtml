@@ -1,0 +1,78 @@
+﻿<link rel="stylesheet" href="~/css/profile.css"/>
+
+<div class="profile-container">
+    <div class="profile-header">
+        <div class="profile-avatar">
+            <img src="~/assets/img/avatar.jpg" alt="Profile Picture" class="avatar-img">
+        </div>
+        <div class="profile-info">
+            <h1 class="profile-name">John Doe</h1>
+            <p class="profile-email">johndoe@example.com</p>
+            <p class="profile-joined">Joined on: January 01, 2020</p>
+        </div>
+        <div class="profile-actions">
+            <button class="btn btn--primary" onclick="editProfile()">Edit Profile</button>
+            <button class="btn btn--secondary" onclick="logout()">Log Out</button>
+        </div>
+    </div>
+
+    <div class="profile-body">
+        <div class="profile-section">
+            <h2 class="section-title">Personal Information</h2>
+            <ul class="info-list">
+                <li><strong>Phone:</strong> +1234567890</li>
+                <li><strong>Address:</strong> 123 Main Street</li>
+                <li><strong>City:</strong> New York</li>
+                <li><strong>Zip Code:</strong> 10001</li>
+            </ul>
+        </div>
+
+        <div class="profile-section">
+            <h2 class="section-title">Order History</h2>
+            <table class="orders-table">
+                <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Date</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>ORD12345</td>
+                    <td>February 10, 2023</td>
+                    <td>$45.99</td>
+                    <td>Shipped</td>
+                    <td><a href="/Order/Details/ORD12345" class="btn btn--link">View</a></td>
+                </tr>
+                <tr>
+                    <td>ORD67890</td>
+                    <td>March 15, 2023</td>
+                    <td>$99.50</td>
+                    <td>Delivered</td>
+                    <td><a href="/Order/Details/ORD67890" class="btn btn--link">View</a></td>
+                </tr>
+                <tr>
+                    <td>ORD11223</td>
+                    <td>April 25, 2023</td>
+                    <td>$75.00</td>
+                    <td>Pending</td>
+                    <td><a href="/Order/Details/ORD11223" class="btn btn--link">View</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    function editProfile() {
+        alert('Edit Profile functionality is not implemented in this static version.');
+    }
+
+    function logout() {
+        alert('Log Out functionality is not implemented in this static version.');
+    }
+</script>
