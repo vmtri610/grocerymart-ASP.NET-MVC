@@ -1,6 +1,8 @@
-﻿namespace grocerymart.ViewModel;
+﻿using grocerymart.Models;
 
-public class ProductModel
+namespace grocerymart.ViewModel;
+
+public class ProductViewModel
 {
-    
+    public List<ProductModel> Products { get; set; }
 }

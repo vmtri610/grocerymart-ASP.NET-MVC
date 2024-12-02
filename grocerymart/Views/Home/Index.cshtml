@@ -1,8 +1,57 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model grocerymart.ViewModel.ProductViewModel
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<link rel="stylesheet" href="~/css/home.css" asp-append-version="true">
+<div class="slideshow">
+    <div class="slideshow__inner">
+
+        <div class="slideshow__item">
+            <img src="~/assets/img/banner.png" alt="" class="slideshow__img">
+        </div>
+        <div class="slideshow__item">
+            <img src="~/assets/img/banner.png" alt="" class="slideshow__img">
+        </div>
+        <div class="slideshow__item">
+            <img src="~/assets/img/banner.png" alt="" class="slideshow__img">
+        </div>
+
+        @* <div class="slideshow__page"> *@
+        @*     <span class="slideshow__num">1</span> *@
+        @*     <span class="slideshow__slider"></span> *@
+        @*     <span class="slideshow__num">5</span> *@
+        @* </div> *@
+    </div>
+
 </div>
+
+<div class="product">
+    <h2 class="product__title">Product List</h2>
+    <div class="product__inner">
+        @foreach (var product in Model.Products)
+        {
+            <div class="product__item">
+                <img src="@product.Img" alt="" class="productList__img" asp-route="Product" onclick="view(@product)">
+                @* <button class="product__like" onclick="liked(@product)"> *@
+                @*     @if (product.Liked) *@
+                @*     { *@
+                @*         <img src="~/assets/icons/red-heart.svg" alt=""> *@
+                @*     } *@
+                @*     else *@
+                @*     { *@
+                @*         <img src="~/assets/icons/heart.svg" alt=""> *@
+                @*     } *@
+                @* </button> *@
+                <div class="product__text">
+                    <p class="product__name">@product.Name</p>
+                    <span class="product__type">@product.Type</span>
+                    <div class="product__row">
+                        <span class="product__row--cost">@string.Format("{0:C}", product.Price)</span>
+                        @* <button class="product__row--rating"> *@
+                        @*     <img src="~/assets/icons/star.svg" alt="">@product.Rate.ToString("F1") *@
+                        @* </button> *@
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+

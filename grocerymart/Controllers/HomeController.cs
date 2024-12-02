@@ -1,31 +1,31 @@
-using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
 using grocerymart.Models;
+using grocerymart.ViewModel;
+using Microsoft.AspNetCore.Mvc;
+using Supabase;
 
 namespace grocerymart.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    private readonly Client _supabaseClient;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(Client supabaseClient)
     {
-        _logger = logger;
+        _supabaseClient = supabaseClient;
     }
 
-    public IActionResult Index()
+    public async Task<IActionResult> Index()
     {
-        return View();
-    }
-
-    public IActionResult Privacy()
-    {
-        return View();
-    }
-
-    [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-    public IActionResult Error()
-    {
-        return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        try
+        {
+            var products = await _supabaseClient.From<ProductModel>().Select("*").Get();
+            var viewModel = new ProductViewModel { Products = products.Models };
+            return View(viewModel);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e.Message);
+            return View();
+        }
     }
 }

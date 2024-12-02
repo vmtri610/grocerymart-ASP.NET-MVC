@@ -1,0 +1,53 @@
+﻿
+@{
+    Layout = null;
+}
+
+<link rel="stylesheet" href="~/css/login.css" asp-append-version="true">
+
+
+<main class="auth">
+    <div class="auth__intro">
+        <img src="~/assets/img/intro.svg" alt="">
+    </div>
+    <div class="auth__content">
+        <div class="auth__content--inner">
+            <app-logo></app-logo>
+            <h1 class="auth__title">Hello Again!</h1>
+            <p class="auth__desc">Welcome back to sign in. As a returning customer, you have access to your previously
+                saved all information.</p>
+            <div class="form">
+                <div class="form__group">
+                    <div class="form__text">
+                        <input type="text" placeholder="Email" autocomplete="off">
+                        <img src="~/assets/icons/mail.svg" alt="">
+                    </div>
+                </div>
+                <div class="form__group">
+                    <div class="form__text">
+                        <input type="password" placeholder="Password" autocomplete="off">
+                        <img src="~/assets/icons/lock.svg" alt="">
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <label class="form__checkbox">
+                    <input type="checkbox" class="form__checkbox-input"/>
+                    <span class="form__checkbox-label">Set as default card</span>
+                </label>
+                <a href="#" class="auth__link">Forgot password?</a>
+            </div>
+            <div class="btn">
+                Sign In
+            </div>
+            <div class="btn-google">
+                <img class="img-google" src="~/assets/icons/google.svg" alt="">
+                Sign In With Google
+            </div>
+            <p class="auth__text">
+                Don’t have an account yet?
+                @* <a class="auth__link" asp-controller="Account" asp-action="SignUp">Sign Up</a> *@
+            </p>
+        </div>
+    </div>
+</main>

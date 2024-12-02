@@ -1,7 +1,23 @@
+using Supabase;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+var url = "https://pjukkgikmmeblotolxbf.supabase.co";
+var key =
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBqdWtrZ2lrbW1lYmxvdG9seGJmIiwicm9sZSI6ImFub24iLCJpYXQiOjE3MzI5NTMwNzksImV4cCI6MjA0ODUyOTA3OX0.qODlWmc9vQCd3G1RrNOy65ACl5a1ACjZlSo43JXFHa4";
+
+var options = new SupabaseOptions
+{
+    AutoConnectRealtime = true
+};
+
+var supabase = new Client(url, key, options);
+await supabase.InitializeAsync();
+
+builder.Services.AddSingleton(supabase);
 
 var app = builder.Build();
 
@@ -9,7 +25,6 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
@@ -21,7 +36,7 @@ app.UseRouting();
 app.UseAuthorization();
 
 app.MapControllerRoute(
-    name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    "default",
+    "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
