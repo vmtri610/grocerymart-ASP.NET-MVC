@@ -29,7 +29,10 @@
         @foreach (var product in Model.Products)
         {
             <div class="product__item">
-                <img src="@product.Img" alt="" class="productList__img" asp-route="Product" onclick="view(@product)">
+                <a asp-controller="Product" asp-action="Index" asp-route-id="@product.Id">
+                    <img src="@product.Img" alt="" class="productList__img" asp-route="Product"
+                         onclick="view(@product)">
+                </a>
                 @* <button class="product__like" onclick="liked(@product)"> *@
                 @*     @if (product.Liked) *@
                 @*     { *@

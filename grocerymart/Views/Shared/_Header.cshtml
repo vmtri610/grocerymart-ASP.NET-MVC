@@ -3,14 +3,14 @@
     Layout = null;
 }
 
-<link rel="stylesheet" href="./css/header.css" />
+<link rel="stylesheet" href="~/css/header.css"/>
 
 <div class="header">
     <div class="container">
         <div class="top-bar">
             <!-- Logo -->
-            <div class="logo" >
-                <img src="./assets/icons/logo.svg" alt="" class="logo__img" />
+            <div class="logo">
+                <img src="~/assets/icons/logo.svg" alt="" class="logo__img"/>
                 <h1 class="logo__title">gocerymart</h1>
             </div>
 
@@ -20,7 +20,7 @@
                     <li>
                         <a href="" class="navbar__link"
                         >Departments<img
-                                src="./assets/icons/arrow-down.svg"
+                                src="~/assets/icons/arrow-down.svg"
                                 alt=""
                                 class="navbar__arrow"
                             /></a>
@@ -29,7 +29,7 @@
                         <a href="" class="navbar__link"
                         >Grocery
                             <img
-                                src="./assets/icons/arrow-down.svg"
+                                src="~/assets/icons/arrow-down.svg"
                                 alt=""
                                 class="navbar__arrow"
                             />
@@ -39,7 +39,7 @@
                         <a href="" class="navbar__link"
                         >Beauty
                             <img
-                                src="./assets/icons/arrow-down.svg"
+                                src="~/assets/icons/arrow-down.svg"
                                 alt=""
                                 class="navbar__arrow"
                             />
@@ -52,26 +52,30 @@
             <div class="top-act">
                 <div class="top-act__group top-act__group--single">
                     <button class="top-act__btn">
-                        <img src="./assets/icons/search.svg" alt="" class="top-act__icon" />
+                        <img src="~/assets/icons/search.svg" alt="" class="top-act__icon"/>
                     </button>
                 </div>
 
                 <div class="top-act__group">
                     <button class="top-act__btn">
-                        <img src="./assets/icons/heart.svg" alt="" class="top-act__icon" />
+                        <img src="~/assets/icons/heart.svg" alt="" class="top-act__icon"/>
                         <span class="top-act__title">0</span>
                     </button>
 
                     <div class="top-act__separate"></div>
 
-                    <button class="top-act__btn"  >
-                        <img src="./assets/icons/buy.svg" alt="" class="top-act__icon" />
-                        <span class="top-act__title">0</span>
-                    </button>
+                    <a asp-controller="Checkout" asp-action="Index">
+                        <button class="top-act__btn">
+                            <img src="~/assets/icons/buy.svg" alt="" class="top-act__icon"/>
+                            <span class="top-act__title">0</span>
+                        </button>
+                    </a>
                 </div>
 
                 <div class="top-act__user">
-                    <img src="./assets/img/avatar.jpg" alt="" class="top-act__avatar" />
+                    <a asp-controller="Profile" asp-action="Index">
+                        <img src="~/assets/img/avatar.jpg" alt="" class="top-act__avatar"/>
+                    </a>
                 </div>
             </div>
         </div>
