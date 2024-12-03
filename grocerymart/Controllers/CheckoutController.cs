@@ -2,7 +2,7 @@
 
 namespace grocerymart.Controllers;
 
-public class ProductDetailController : Controller
+public class CheckoutController : Controller
 {
     // GET
     public IActionResult Index()
