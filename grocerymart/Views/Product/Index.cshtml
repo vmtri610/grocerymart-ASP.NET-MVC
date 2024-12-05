@@ -1,4 +1,6 @@
-﻿<link rel="stylesheet" href="~/css/product.css" asp-append-version="true">
+﻿@model ProductModel
+
+<link rel="stylesheet" href="~/css/product.css" asp-append-version="true">
 
 <div class="product-container prod-info-content">
     <div class="row">
@@ -6,7 +8,7 @@
             <div class="prod-preview__list">
                 <div class="prod-preview__item">
                     <img
-                        src="~/assets/img/product1.png"
+                        src="@Model.Img"
                         alt=""
                         class="prod-preview__img"
                     />
@@ -40,7 +42,7 @@
         <div class="form">
             <section class="prod-info">
                 <h1 class="prod-info__heading">
-                    Product Name
+                    @Model.Name
                 </h1>
 
                 <div class="row">
@@ -123,7 +125,7 @@
                                     <span class="prod-info__price">1000</span>
                                     <span class="prod-info__tax">10%</span>
                                 </div>
-                                <p class="prod-info__total-price">product</p>
+                                <p class="prod-info__total-price">@Model.Price</p>
                                 <div class="prod-info__row">
                                     <button
                                         class="btn btn--primary prod-info__add-to-cart"

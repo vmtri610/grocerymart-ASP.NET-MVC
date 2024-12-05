@@ -1,6 +1,7 @@
 ﻿
 @{
     Layout = null;
+    var username = ViewData["Username"] as string;
 }
 
 <link rel="stylesheet" href="~/css/header.css"/>
@@ -48,36 +49,46 @@
                 </ul>
             </nav>
 
-            <!-- Action -->
-            <div class="top-act">
-                <div class="top-act__group top-act__group--single">
-                    <button class="top-act__btn">
-                        <img src="~/assets/icons/search.svg" alt="" class="top-act__icon"/>
-                    </button>
-                </div>
-
-                <div class="top-act__group">
-                    <button class="top-act__btn">
-                        <img src="~/assets/icons/heart.svg" alt="" class="top-act__icon"/>
-                        <span class="top-act__title">0</span>
-                    </button>
-
-                    <div class="top-act__separate"></div>
-
-                    <a asp-controller="Checkout" asp-action="Index">
+            @if (!string.IsNullOrEmpty(username))
+            {
+                <div class="top-act">
+                    <div class="top-act__group top-act__group--single">
                         <button class="top-act__btn">
-                            <img src="~/assets/icons/buy.svg" alt="" class="top-act__icon"/>
+                            <img src="~/assets/icons/search.svg" alt="" class="top-act__icon"/>
+                        </button>
+                    </div>
+
+                    <div class="top-act__group">
+                        <button class="top-act__btn">
+                            <img src="~/assets/icons/heart.svg" alt="" class="top-act__icon"/>
                             <span class="top-act__title">0</span>
                         </button>
-                    </a>
-                </div>
 
-                <div class="top-act__user">
-                    <a asp-controller="Profile" asp-action="Index">
-                        <img src="~/assets/img/avatar.jpg" alt="" class="top-act__avatar"/>
-                    </a>
+                        <div class="top-act__separate"></div>
+
+                        <a asp-controller="Checkout" asp-action="Index">
+                            <button class="top-act__btn">
+                                <img src="~/assets/icons/buy.svg" alt="" class="top-act__icon"/>
+                                <span class="top-act__title">0</span>
+                            </button>
+                        </a>
+                    </div>
+
+
+                    <div class="top-act__user">
+                        <a asp-controller="Profile" asp-action="Index">
+                            <img src="~/assets/img/avatar.jpg" alt="" class="top-act__avatar"/>
+                        </a>
+                    </div>
                 </div>
-            </div>
+            }
+            else
+            {
+                <div class="top-act">
+                    <a asp-controller="Login" asp-action="Index" class="btn btn--text d-md-none">Sign In</a>
+                    <a class="top-act__sign-up btn btn--primary">Sign Up</a>
+                </div>
+            }
         </div>
     </div>
 </div>

@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     Layout = null;
 }
 
@@ -13,7 +12,6 @@
 <meta name="msapplication-TileColor" content="#da532c"/>
 <meta name="theme-color" content="#ffffff"/>
 
-
 <main class="auth">
     <div class="auth__intro">
         <img src="~/assets/img/intro.svg" alt="">
@@ -23,19 +21,21 @@
             <app-logo></app-logo>
             <h1 class="auth__title">Welcome Back!</h1>
             <p class="auth__desc">Sign in to access your saved information and continue your journey with us.</p>
-            <form asp-action="Login" method="post">
+            <form asp-action="Login" method="post" id="loginForm">
                 <div class="form">
                     <div class="form__group">
                         <div class="form__text">
-                            <input type="email" name="email" placeholder="Email Address" autocomplete="off">
+                            <input type="email" name="email" placeholder="Email Address" autocomplete="off" required>
                             <img src="~/assets/icons/mail.svg" alt="">
                         </div>
+                        <div asp-validation-for="email" class="text-danger"></div> <!-- Display email errors -->
                     </div>
                     <div class="form__group">
                         <div class="form__text">
-                            <input type="password" name="password" placeholder="Password" autocomplete="off">
+                            <input type="password" name="password" placeholder="Password" autocomplete="off" required>
                             <img src="~/assets/icons/lock.svg" alt="">
                         </div>
+                        <div asp-validation-for="password" class="text-danger"></div> <!-- Display password errors -->
                     </div>
                 </div>
                 <div class="row">
@@ -47,9 +47,43 @@
                 </div>
                 <button type="submit" class="btn">Sign In</button>
             </form>
+
+            <!-- Validation Summary -->
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
             <p class="auth__text">
                 Don’t have an account yet? <span>Create one</span>.
             </p>
         </div>
     </div>
 </main>
+
+<script>
+    document.getElementById('loginForm').addEventListener('submit', function (event) {
+        var email = document.querySelector('[name="email"]');
+        var password = document.querySelector('[name="password"]');
+        var isValid = true;
+
+        // Email validation
+        if (!email.value) {
+            alert("Email is required");
+            isValid = false;
+        } else if (!/\S+@@\S+\.\S+/.test(email.value)) {  // Check for valid email format
+            alert("Please enter a valid email address");
+            isValid = false;
+        }
+
+        // Password validation
+        if (!password.value) {
+            alert("Password is required");
+            isValid = false;
+        } else if (password.value.length < 6) {
+            alert("Password must be at least 6 characters long");
+            isValid = false;
+        }
+
+        if (!isValid) {
+            event.preventDefault(); // Prevent form submission if validation fails
+        }
+    });
+</script>
