@@ -12,10 +12,16 @@ public class HomeController : Controller
     public HomeController(Client supabaseClient)
     {
         _supabaseClient = supabaseClient;
+        Console.WriteLine();
     }
 
     public async Task<IActionResult> Index()
     {
+        var userId = HttpContext.Session.GetString("UserId");
+        if (!string.IsNullOrEmpty(userId))
+            Console.WriteLine($"User ID: {userId}");
+        else
+            Console.WriteLine("No user is logged in.");
         try
         {
             var products = await _supabaseClient.From<ProductModel>().Select("*").Get();

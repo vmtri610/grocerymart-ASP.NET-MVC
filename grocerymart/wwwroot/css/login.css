@@ -1,216 +1,224 @@
 ﻿body {
-    margin: 0;
-    font-family: 'Inter', sans-serif;
-    background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  margin: 0;
+  font-family: "Inter", sans-serif;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
 }
 
 .auth {
-    display: flex;
-    min-height: 100vh;
+  display: flex;
+  min-height: 100vh;
 }
 
 .auth__intro {
-    width: 65%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-size: cover;
-    position: relative;
+  width: 65%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-size: cover;
+  position: relative;
 }
 
 .auth__intro::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: 1;
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
 }
 
 .auth__intro img {
-    z-index: 2;
-    max-width: 80%;
+  z-index: 2;
+  max-width: 80%;
 }
 
 .auth__content {
-    width: 35%;
-    background: #ffffff;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    padding: 40px 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 35%;
+  background: #ffffff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  padding: 40px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .auth__content--inner {
-    width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  width: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .auth__title {
-    margin-top: 20px;
-    font-size: 2.8rem;
-    font-weight: 600;
-    color: #333;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+  font-size: 2.8rem;
+  font-weight: 600;
+  color: #333;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
 
 .auth__desc {
-    margin-top: 10px;
-    font-size: 1.2rem;
-    color: #666;
+  margin-top: 10px;
+  font-size: 1.2rem;
+  color: #666;
 }
 
 .form {
-    margin-top: 30px;
-    width: 100%;
+  margin-top: 30px;
+  width: 100%;
 }
 
 .form__group {
-    margin-bottom: 20px;
-    position: relative;
+  margin-bottom: 20px;
+  position: relative;
 }
 
 .form__text {
-    width: 100%;
-    height: 50px;
-    display: flex;
-    align-items: center;
-    padding: 0 12px;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    box-sizing: border-box;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    background: #f9f9f9;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  background: #f9f9f9;
 }
 
 .form__text:hover {
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .form__text:focus-within {
-    border: 1px solid #0071dc;
-    background: #fff;
+  border: 1px solid #0071dc;
+  background: #fff;
 }
 
 .form__text input {
-    flex: 1;
-    width: 100%;
-    height: 100%;
-    font-size: 1rem;
-    border: none;
-    outline: none;
-    background: transparent;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  background: transparent;
 }
 
 .form__text img {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 .row {
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .form__checkbox {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 .form__checkbox-input {
-    width: 18px;
-    height: 18px;
-    border-radius: 4px;
-    border: 1px solid #9e9da8;
-    cursor: pointer;
+  width: 18px;
+  height: 18px;
+  border-radius: 4px;
+  border: 1px solid #9e9da8;
+  cursor: pointer;
 }
 
 .form__checkbox-label {
-    margin-left: 6px;
-    font-size: 0.9rem;
-    color: #777;
+  margin-left: 6px;
+  font-size: 0.9rem;
+  color: #777;
 }
 
 .auth__link {
-    color: #0071dc;
-    font-size: 1rem;
-    font-weight: 500;
-    transition: color 0.3s ease;
+  color: #0071dc;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
 }
 
 .auth__link:hover {
-    color: #0056b3;
+  color: #0056b3;
 }
 
 .btn {
-    width: 100%;
-    margin-top: 40px;
-    color: #fff;
-    background: linear-gradient(135deg, #ffb700, #ffa500);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 50px;
-    border: none;
-    border-radius: 6px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.3s ease, transform 0.2s ease;
+  width: 100%;
+  margin-top: 40px;
+  color: #fff;
+  background: linear-gradient(135deg, #ffb700, #ffa500);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    transform 0.2s ease;
 }
 
 .btn:hover {
-    background: linear-gradient(135deg, #ffa500, #ff9400);
-    transform: scale(1.02);
+  background: linear-gradient(135deg, #ffa500, #ff9400);
+  transform: scale(1.02);
 }
 
 .btn-google {
-    width: 100%;
-    margin-top: 20px;
-    color: #333;
-    background: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 50px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: 1.2rem;
-    font-weight: 600;
-    cursor: pointer;
-    transition: background 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+  margin-top: 20px;
+  color: #333;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 50px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    background 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .btn-google:hover {
-    background: #f1f1f1;
-    transform: scale(1.02);
+  background: #f1f1f1;
+  transform: scale(1.02);
 }
 
 .img-google {
-    width: 24px;
-    height: 24px;
-    margin-right: 12px;
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
 }
 
 .auth__text {
-    margin-top: 60px;
-    font-size: 1rem;
-    color: #777;
+  margin-top: 60px;
+  font-size: 1rem;
+  color: #777;
 }
 
 .auth__text span {
-    color: #0071dc;
-    cursor: pointer;
-    transition: color 0.3s ease;
-    text-decoration: underline;
+  color: #0071dc;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  text-decoration: underline;
 }
 
 .auth__text span:hover {
-    color: #0056b3;
+  color: #0056b3;
+}
+
+form {
+  width: 100%;
 }
