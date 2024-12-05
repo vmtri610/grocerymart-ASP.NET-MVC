@@ -10,7 +10,20 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8f66a49-29fe-4c25-a330-b04f88b30cce" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/grocerymart/Controllers/AuthController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.grocerymart/.idea/.name" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.grocerymart/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.grocerymart/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/config/applicationhost.config" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/config/applicationhost.config" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Controllers/LoginController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Controllers/LoginController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Properties/launchSettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Properties/launchSettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Views/Login/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Login/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Views/Shared/_Header.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Shared/_Header.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Shared/_Layout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/login.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,13 +45,11 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://D:/Hhaozzzzzz/HSU/3rd_year/PTW/project/grocerymart-ASP.NET-MVC/grocerymart/Views/Login/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Hhaozzzzzz/HSU/3rd_year/PTW/project/grocerymart-ASP.NET-MVC/grocerymart/Views/Login/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Hhaozzzzzz/HSU/3rd_year/PTW/project/grocerymart-ASP.NET-MVC/grocerymart/Views/Login/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Hhaozzzzzz/HSU/3rd_year/PTW/project/grocerymart-ASP.NET-MVC/grocerymart/Views/Login/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Hhaozzzzzz/HSU/3rd_year/PTW/project/grocerymart-ASP.NET-MVC/grocerymart/Views/Login/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Hhaozzzzzz/HSU/3rd_year/PTW/project/grocerymart-ASP.NET-MVC/grocerymart/Views/Login/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/Hhaozzzzzz/HSU/3rd_year/PTW/project/grocerymart-ASP.NET-MVC/grocerymart/Views/Login/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Repos/Sem2441/Web/grocerymart/grocerymart/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Repos/Sem2441/Web/grocerymart/grocerymart/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Repos/Sem2441/Web/grocerymart/grocerymart/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Repos/Sem2441/Web/grocerymart/grocerymart/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Repos/Sem2441/Web/grocerymart/grocerymart/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/grocerymart/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/grocerymart/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/grocerymart/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map" root0="FORCE_HIGHLIGHTING" />
@@ -47,6 +58,7 @@
     <setting file="file://$PROJECT_DIR$/grocerymart/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.js.map" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/grocerymart/wwwroot/lib/bootstrap/dist/js/bootstrap.esm.min.js.map" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/grocerymart/wwwroot/lib/jquery/dist/jquery.min.map" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f2e3970763e345ae93dbba9d72a4cbca3b8a0/6e/4eed5a09/RazorPage.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
@@ -63,25 +75,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.grocerymart: IIS Express.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\vmtri\\AppData\\Roaming\\npm\\node_modules\\prettier",
-    "rider.code.cleanup.on.save": "true",
-    "settings.editor.selected.configurable": "configurable.group.editor",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.grocerymart: IIS Express.executor&quot;: &quot;Debug&quot;,
+    &quot;.NET Launch Settings Profile.grocerymart: http.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.grocerymart: https.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\vmtri\\AppData\\Roaming\\npm\\node_modules\\prettier&quot;,
+    &quot;rider.code.cleanup.on.save&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager" selected=".NET Launch Settings Profile.grocerymart: IIS Express">
+}</component>
+  <component name="RunManager" selected=".NET Launch Settings Profile.grocerymart: https">
     <configuration name="grocerymart: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/grocerymart/grocerymart.csproj" />
       <option name="LAUNCH_PROFILE_TFM" value="net8.0" />
@@ -141,7 +155,10 @@
       <workItem from="1733072835969" duration="686000" />
       <workItem from="1733103191862" duration="3293000" />
       <workItem from="1733107438825" duration="1583000" />
-      <workItem from="1733122596494" duration="12907000" />
+      <workItem from="1733122596494" duration="12502000" />
+      <workItem from="1733200493009" duration="9805000" />
+      <workItem from="1733322273966" duration="19000" />
+      <workItem from="1733368631699" duration="3966000" />
     </task>
     <servers />
   </component>

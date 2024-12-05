@@ -4,6 +4,14 @@
 }
 
 <link rel="stylesheet" href="~/css/login.css" asp-append-version="true">
+<!-- Favicon -->
+<link rel="apple-touch-icon" sizes="76x76" href="./assets/favicon/apple-touch-icon.png"/>
+<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png"/>
+<link rel="manifest" href="./assets/favicon/site.webmanifest"/>
+<link rel="mask-icon" href="./assets/favicon/safari-pinned-tab.svg" color="#5bbad5"/>
+<meta name="msapplication-TileColor" content="#da532c"/>
+<meta name="theme-color" content="#ffffff"/>
 
 
 <main class="auth">
@@ -15,32 +23,30 @@
             <app-logo></app-logo>
             <h1 class="auth__title">Welcome Back!</h1>
             <p class="auth__desc">Sign in to access your saved information and continue your journey with us.</p>
-            <div class="form">
-                <div class="form__group">
-                    <div class="form__text">
-                        <input type="email" placeholder="Email Address" autocomplete="off">
-                        <img src="~/assets/icons/mail.svg" alt="">
+            <form asp-action="Login" method="post">
+                <div class="form">
+                    <div class="form__group">
+                        <div class="form__text">
+                            <input type="email" name="email" placeholder="Email Address" autocomplete="off">
+                            <img src="~/assets/icons/mail.svg" alt="">
+                        </div>
+                    </div>
+                    <div class="form__group">
+                        <div class="form__text">
+                            <input type="password" name="password" placeholder="Password" autocomplete="off">
+                            <img src="~/assets/icons/lock.svg" alt="">
+                        </div>
                     </div>
                 </div>
-                <div class="form__group">
-                    <div class="form__text">
-                        <input type="password" placeholder="Password" autocomplete="off">
-                        <img src="~/assets/icons/lock.svg" alt="">
-                    </div>
+                <div class="row">
+                    <label class="form__checkbox">
+                        <input type="checkbox" class="form__checkbox-input">
+                        <span class="form__checkbox-label">Remember Me</span>
+                    </label>
+                    <a href="#" class="auth__link">Forgot Password?</a>
                 </div>
-            </div>
-            <div class="row">
-                <label class="form__checkbox">
-                    <input type="checkbox" class="form__checkbox-input">
-                    <span class="form__checkbox-label">Remember Me</span>
-                </label>
-                <a href="#" class="auth__link">Forgot Password?</a>
-            </div>
-            <button class="btn">Sign In</button>
-            <button class="btn-google">
-                <img class="img-google" src="~/assets/icons/google.svg" alt="">
-                Sign In with Google
-            </button>
+                <button type="submit" class="btn">Sign In</button>
+            </form>
             <p class="auth__text">
                 Don’t have an account yet? <span>Create one</span>.
             </p>
