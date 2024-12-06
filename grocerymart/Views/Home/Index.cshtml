@@ -34,16 +34,16 @@
                         <img src="@product.Img" alt="" class="productList__img" asp-route="Product"
                              onclick="view(@product)">
                     </a>
-                    @* <button class="product__like" onclick="liked(@product)"> *@
-                    @*     @if (product.Liked) *@
-                    @*     { *@
-                    @*         <img src="~/assets/icons/red-heart.svg" alt=""> *@
-                    @*     } *@
-                    @*     else *@
-                    @*     { *@
-                    @*         <img src="~/assets/icons/heart.svg" alt=""> *@
-                    @*     } *@
-                    @* </button> *@
+                    <button class="product__like" onclick="toggleLike(@product.Id)">
+                        @*     @if (product.Liked) *@
+                        @*     { *@
+                        @*         <img src="~/assets/icons/red-heart.svg" alt=""> *@
+                        @*     } *@
+                        @*     else *@
+                        @*     { *@
+                        <img src="~/assets/icons/heart.svg" alt="Not Liked"/>
+                        @*     } *@
+                    </button>
                     <div class="product__text">
                         <p class="product__name">@product.Name</p>
                         <span class="product__type">@product.Type</span>
