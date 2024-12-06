@@ -1,7 +1,7 @@
 ﻿
 @{
     Layout = null;
-    var username = ViewData["Username"] as string;
+    var username = Context.Session.GetString("UserId");
 }
 
 <link rel="stylesheet" href="~/css/header.css"/>
@@ -86,7 +86,7 @@
             {
                 <div class="top-act">
                     <a asp-controller="Login" asp-action="Index" class="btn btn--text d-md-none">Sign In</a>
-                    <a class="top-act__sign-up btn btn--primary">Sign Up</a>
+                    <a asp-controller="SignUp" asp-action="Index" class="top-act__sign-up btn btn--primary">Sign Up</a>
                 </div>
             }
         </div>

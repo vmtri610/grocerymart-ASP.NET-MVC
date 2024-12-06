@@ -64,7 +64,10 @@ supabase.Auth.AddStateChangedListener((sender, changed) =>
         case Constants.AuthState.SignedIn:
             var user = sender.CurrentUser;
             if (user != null && context != null)
+            {
                 context.Session.SetString("UserId", user.Id); // Store user ID in session
+            }
+
             break;
         case Constants.AuthState.SignedOut:
             if (context != null)

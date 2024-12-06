@@ -21,7 +21,7 @@
             <app-logo></app-logo>
             <h1 class="auth__title">Create an Account</h1>
             <p class="auth__desc">Sign up to start your journey with us. It’s quick and easy!</p>
-            <form asp-action="Register" method="post">
+            <form asp-action="SignUp" method="post" id="signUpForm">
                 <div class="form">
                     <!-- Full Name Field -->
                     <div class="form__group">
@@ -36,6 +36,7 @@
                             <input type="email" name="email" placeholder="Email Address" autocomplete="off" required>
                             <img src="~/assets/icons/mail.svg" alt="">
                         </div>
+                        <div class="text-danger" id="emailError"></div>
                     </div>
                     <!-- Password Field -->
                     <div class="form__group">
@@ -43,6 +44,7 @@
                             <input type="password" name="password" placeholder="Password" autocomplete="off" required>
                             <img src="~/assets/icons/lock.svg" alt="">
                         </div>
+                        <div class="text-danger" id="passwordError"></div>
                     </div>
                     <!-- Confirm Password Field -->
                     <div class="form__group">
@@ -51,6 +53,7 @@
                                    autocomplete="off" required>
                             <img src="~/assets/icons/lock.svg" alt="">
                         </div>
+                        <div class="text-danger" id="confirmPasswordError"></div>
                     </div>
                 </div>
                 <div class="row">
@@ -67,3 +70,52 @@
         </div>
     </div>
 </main>
+
+<script>
+    document.getElementById('signUpForm').addEventListener('submit', function (event) {
+        var fullName = document.querySelector('[name="fullName"]');
+        var email = document.querySelector('[name="email"]');
+        var password = document.querySelector('[name="password"]');
+        var confirmPassword = document.querySelector('[name="confirmPassword"]');
+        var isValid = true;
+
+        // Email Validation (regex for valid email format)
+        var emailRegex = /\S+@@\S+\.\S+/;
+        if (!email.value) {
+            document.getElementById('emailError').textContent = "Email is required.";
+            isValid = false;
+        } else if (!emailRegex.test(email.value)) {
+            document.getElementById('emailError').textContent = "Please enter a valid email address.";
+            isValid = false;
+        } else {
+            document.getElementById('emailError').textContent = "";
+        }
+
+        // Password Validation (regex for strong password)
+        var passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@@#$%^&*]).{6,}$/;
+        if (!password.value) {
+            document.getElementById('passwordError').textContent = "Password is required.";
+            isValid = false;
+        } else if (!passwordRegex.test(password.value)) {
+            document.getElementById('passwordError').textContent = "Password must be at least 6 characters long, include an uppercase letter, a number, and a special character.";
+            isValid = false;
+        } else {
+            document.getElementById('passwordError').textContent = "";
+        }
+
+        // Confirm Password Validation
+        if (confirmPassword.value !== password.value) {
+            document.getElementById('confirmPasswordError').textContent = "Passwords do not match.";
+            isValid = false;
+        } else {
+            document.getElementById('confirmPasswordError').textContent = "";
+        }
+
+
+        if (!isValid) {
+            event.preventDefault(); // Prevent form submission if validation fails
+        }
+
+
+    });
+</script>
