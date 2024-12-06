@@ -10,16 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8f66a49-29fe-4c25-a330-b04f88b30cce" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/grocerymart/Models/ProfileModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.grocerymart/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.grocerymart/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Controllers/HomeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Controllers/LoginController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Controllers/LoginController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Controllers/SignUpController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Controllers/SignUpController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Views/Login/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Login/Index.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/grocerymart/wwwroot/assets/icons/fullname.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Home/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grocerymart/Views/Shared/_Header.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Shared/_Header.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grocerymart/Views/SignUp/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/SignUp/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/checkout.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/checkout.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/sign_up.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/sign_up.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +86,7 @@
     &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
     &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\vmtri\\AppData\\Roaming\\npm\\node_modules\\prettier&quot;,
     &quot;rider.code.cleanup.on.save&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;HotReloadSettingsPage&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
@@ -154,9 +153,7 @@
       <workItem from="1733122596494" duration="12502000" />
       <workItem from="1733200493009" duration="9805000" />
       <workItem from="1733322273966" duration="19000" />
-      <workItem from="1733368631699" duration="13827000" />
-      <workItem from="1733455751918" duration="300000" />
-      <workItem from="1733488720453" duration="3000" />
+      <workItem from="1733368631699" duration="8479000" />
     </task>
     <servers />
   </component>
