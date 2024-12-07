@@ -77,32 +77,40 @@
         var emailRegex = /\S+@@\S+\.\S+/;
         if (!email.value) {
             document.getElementById('emailError').textContent = "Email is required.";
+            email.closest('.form__text').classList.add('error');
             isValid = false;
         } else if (!emailRegex.test(email.value)) {
             document.getElementById('emailError').textContent = "Please enter a valid email address.";
+            email.closest('.form__text').classList.add('error');
             isValid = false;
         } else {
             document.getElementById('emailError').textContent = "";
+            email.closest('.form__text').classList.remove('error');
         }
 
         // Password Validation (regex for strong password)
         var passwordRegex = /^(?=.*[A-Z])(?=.*\d)(?=.*[!@@#$%^&*]).{6,}$/;
         if (!password.value) {
             document.getElementById('passwordError').textContent = "Password is required.";
+            password.closest('.form__text').classList.add('error');
             isValid = false;
         } else if (!passwordRegex.test(password.value)) {
             document.getElementById('passwordError').textContent = "Password must be at least 6 characters long, include an uppercase letter, a number, and a special character.";
+            password.closest('.form__text').classList.add('error');
             isValid = false;
         } else {
             document.getElementById('passwordError').textContent = "";
+            password.closest('.form__text').classList.remove('error');
         }
 
         // Confirm Password Validation
         if (confirmPassword.value !== password.value) {
             document.getElementById('confirmPasswordError').textContent = "Passwords do not match.";
+            confirmPassword.closest('.form__text').classList.add('error');
             isValid = false;
         } else {
             document.getElementById('confirmPasswordError').textContent = "";
+            confirmPassword.closest('.form__text').classList.remove('error');
         }
 
 

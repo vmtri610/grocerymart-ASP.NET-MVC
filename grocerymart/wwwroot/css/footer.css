@@ -12,7 +12,7 @@
 
 .footer {
     margin-top: 30px;
-    padding: 50px;
+    padding: 30px 90px;
     font-size: 1.4rem;
     background: #eee;
 }
@@ -152,11 +152,11 @@ ul.footer__list {
     align-items: center;
     justify-content: center;
     gap: 10px;
-    height: 46px;
+    height: 44px;
     padding: 0 20px;
     border-radius: 6px;
     background: #f8f8fb;
-    font-size: 1.8rem;
+    font-size: 1.6rem;
     font-weight: 500;
     white-space: nowrap;
     user-select: none;

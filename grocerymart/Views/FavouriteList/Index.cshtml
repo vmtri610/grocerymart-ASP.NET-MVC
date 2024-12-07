@@ -1,0 +1,37 @@
+﻿@{
+    var favouriteProducts = new List<dynamic>
+    {
+        new { Id = 1, Name = "Coffee Beans - Espresso Arabica and Robusta Beans", Price = 200.000, ImageUrl = "/assets/img/product1.png" },
+        new { Id = 2, Name = "Coffee Beans Espresso", Price = 0.5, ImageUrl = "/assets/img/product2.png" },
+        new { Id = 3, Name = "Qualità Oro Mountain", Price = 0.8, ImageUrl = "/assets/img/product3.png" }
+    };
+}
+
+<link rel="stylesheet" href="~/css/favourite_list.css"/>
+
+<main class="favourite-list">
+    <h1 class="favourite-list__title">Your Favourite List</h1>
+
+    <section class="favourite-list__items">
+        @foreach (var product in favouriteProducts)
+        {
+            <div class="favourite-item">
+                <img src="@product.ImageUrl" alt="@product.Name" class="favourite-item__img"/>
+                <div class="favourite-item__details">
+                    <h2 class="favourite-item__name">@product.Name</h2>
+                    <p class="favourite-item__price">$@product.Price.ToString("F2")</p>
+                </div>
+            </div>
+        }
+    </section>
+</main>
+
+<script>
+    function removeItem(button) {
+        const item = button.closest('.favourite-item');
+        item.remove();
+        if (document.querySelectorAll('.favourite-item').length === 0) {
+            document.querySelector('.favourite-list__items').innerHTML = '<p>No favourite items found.</p>';
+        }
+    }
+</script>
