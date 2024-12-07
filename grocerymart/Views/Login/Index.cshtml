@@ -21,6 +21,8 @@
             <app-logo></app-logo>
             <h1 class="auth__title">Welcome Back!</h1>
             <p class="auth__desc">Sign in to access your saved information and continue your journey with us.</p>
+
+
             <form asp-action="Login" method="post" id="loginForm">
                 <div class="form">
                     <div class="form__group">
@@ -38,6 +40,13 @@
                         <div asp-validation-for="password" class="text-danger"></div> <!-- Display password errors -->
                     </div>
                 </div>
+                <!-- Display error message if login fails -->
+                @if (TempData["LoginError"] != null)
+                {
+                    <div class="alert alert-danger">
+                        @TempData["LoginError"]
+                    </div>
+                }
                 <div class="row">
                     <label class="form__checkbox">
                         <input type="checkbox" class="form__checkbox-input">
@@ -76,9 +85,6 @@
         // Password validation
         if (!password.value) {
             alert("Password is required");
-            isValid = false;
-        } else if (password.value.length < 6) {
-            alert("Password must be at least 6 characters long");
             isValid = false;
         }
 

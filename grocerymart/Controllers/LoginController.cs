@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Client = Supabase.Client;
+using Supabase;
 
 namespace GroceryMart.Controllers;
 
@@ -19,10 +19,26 @@ public class LoginController : Controller
 
     public async Task<IActionResult> Login(string email, string password)
     {
-        var session = await _supabaseClient.Auth.SignIn(email, password);
+        try
+        {
+            // Attempt login with Supabase
+            var session = await _supabaseClient.Auth.SignIn(email, password);
 
-        Console.WriteLine(session?.User?.Email);
+            if (session?.User == null)
+            {
+                // Login failed, user not found or invalid credentials
+                TempData["LoginError"] = "Invalid email or password. Please try again.";
+                return RedirectToAction("Index");
+            }
 
-        return RedirectToAction("Index", "Home");
+            // Redirect to Home page if login is successful
+            return RedirectToAction("Index", "Home");
+        }
+        catch (Exception ex)
+        {
+            // Handle exceptions (e.g., network issues, service unavailability, etc.)
+            TempData["LoginError"] = "An error occurred while logging in. Please try again later.";
+            return RedirectToAction("Index");
+        }
     }
 }

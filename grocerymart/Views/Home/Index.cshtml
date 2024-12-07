@@ -1,4 +1,13 @@
-﻿@model grocerymart.ViewModel.ProductViewModel
+﻿@using Newtonsoft.Json
+@model grocerymart.ViewModel.ProductViewModel
+@{
+    var userJson = Context.Session.GetString("User");
+    var user = new ProfileModel();
+    if (!string.IsNullOrEmpty(userJson))
+    {
+        user = JsonConvert.DeserializeObject<ProfileModel>(userJson);
+    }
+}
 
 <link rel="stylesheet" href="~/css/home.css" asp-append-version="true">
 
@@ -34,15 +43,15 @@
                         <img src="@product.Img" alt="" class="productList__img" asp-route="Product"
                              onclick="view(@product)">
                     </a>
-                    <button class="product__like" onclick="toggleLike(@product.Id)">
-                        @*     @if (product.Liked) *@
-                        @*     { *@
-                        @*         <img src="~/assets/icons/red-heart.svg" alt=""> *@
-                        @*     } *@
-                        @*     else *@
-                        @*     { *@
-                        <img src="~/assets/icons/heart.svg" alt="Not Liked"/>
-                        @*     } *@
+                    <button class="product__like" data-product-id="@product.Id">
+                        @if (product.UserLiked.Contains(user?.Id))
+                        {
+                            <img class="heart-icon" src="~/assets/icons/red-heart.svg" alt="Liked"/>
+                        }
+                        else
+                        {
+                            <img class="heart-icon" src="~/assets/icons/heart.svg" alt="Not Liked"/>
+                        }
                     </button>
                     <div class="product__text">
                         <p class="product__name">@product.Name</p>
@@ -59,5 +68,38 @@
         </div>
     </div>
 </div>
+
+<script>
+    const redHeartIcon = '@Url.Content("~/assets/icons/red-heart.svg")';
+    const heartIcon = '@Url.Content("~/assets/icons/heart.svg")';
+
+    document.querySelectorAll('.product__like').forEach(button => {
+        button.addEventListener('click', async (event) => {
+            const productId = button.getAttribute('data-product-id');
+            const response = await fetch(`/Home/LikedProducts?product_id=${productId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+
+            const result = await response.json();
+            if (result.success) {
+                // Update the icon based on the result
+                const img = button.querySelector('img');
+                if (img.alt === "Not Liked") {
+                    img.src = redHeartIcon; // Use the Razor-generated URL
+                    img.alt = 'Liked';
+                } else {
+                    img.src = heartIcon;
+                    img.alt = 'Not Liked';
+                }
+            } else {
+                console.error(result.error);
+                alert('An error occurred while updating the like status');
+            }
+        });
+    });
+</script>
 
 
