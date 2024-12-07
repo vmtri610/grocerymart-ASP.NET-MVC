@@ -10,15 +10,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8f66a49-29fe-4c25-a330-b04f88b30cce" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/grocerymart/wwwroot/assets/icons/fullname.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/grocerymart/services/NotificationHub.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.grocerymart/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.grocerymart/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Controllers/ProductController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Controllers/ProductController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Models/ProductModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Models/ProductModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Models/ProfileModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Models/ProfileModel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Program.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grocerymart/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Home/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Views/Product/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Product/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grocerymart/Views/Shared/_Header.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Shared/_Header.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Views/SignUp/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/SignUp/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/checkout.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/checkout.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/sign_up.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/sign_up.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/grocerymart.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/grocerymart.csproj" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,9 +42,22 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Repos/Sem2441/Web/grocerymart/grocerymart/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Repos/Sem2441/Web/grocerymart/grocerymart/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Repos/Sem2441/Web/grocerymart/grocerymart/Program.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Repos/Sem2441/Web/grocerymart/grocerymart/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Repos/Sem2441/Web/grocerymart/grocerymart/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Repos/Sem2441/Web/grocerymart/grocerymart/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Repos/Sem2441/Web/grocerymart/grocerymart/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Repos/Sem2441/Web/grocerymart/grocerymart/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Repos/Sem2441/Web/grocerymart/grocerymart/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Repos/Sem2441/Web/grocerymart/grocerymart/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Repos/Sem2441/Web/grocerymart/grocerymart/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Repos/Sem2441/Web/grocerymart/grocerymart/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Repos/Sem2441/Web/grocerymart/grocerymart/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Repos/Sem2441/Web/grocerymart/grocerymart/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Repos/Sem2441/Web/grocerymart/grocerymart/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Repos/Sem2441/Web/grocerymart/grocerymart/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Repos/Sem2441/Web/grocerymart/grocerymart/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Repos/Sem2441/Web/grocerymart/grocerymart/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock://C:/Repos/Sem2441/Web/grocerymart/grocerymart/Controllers/HomeController.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Repos/Sem2441/Web/grocerymart/grocerymart/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock://C:/Repos/Sem2441/Web/grocerymart/grocerymart/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/grocerymart/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map" root0="FORCE_HIGHLIGHTING" />

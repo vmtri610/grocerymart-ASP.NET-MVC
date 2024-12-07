@@ -1,7 +1,14 @@
-﻿
+﻿@using Newtonsoft.Json
 @{
     Layout = null;
-    var username = Context.Session.GetString("UserId");
+    var userJson = Context.Session.GetString("User");
+    var user = new ProfileModel();
+    if (!string.IsNullOrEmpty(userJson))
+    {
+        user = JsonConvert.DeserializeObject<ProfileModel>(userJson);
+    }
+
+    var likedProducts = Context.Session.GetInt32("LikedProducts");
 }
 
 <link rel="stylesheet" href="~/css/header.css"/>
@@ -49,7 +56,7 @@
                 </ul>
             </nav>
 
-            @if (!string.IsNullOrEmpty(username))
+            @if (!string.IsNullOrEmpty(user?.FullName))
             {
                 <div class="top-act">
                     <div class="top-act__group top-act__group--single">
@@ -61,8 +68,7 @@
                     <div class="top-act__group">
                         <button class="top-act__btn">
                             <img src="~/assets/icons/heart.svg" alt="" class="top-act__icon"/>
-                            <span class="top-act__title">0</span>
-                        </button>
+                            <span class="top-act__title">@likedProducts</span></button>
 
                         <div class="top-act__separate"></div>
 
@@ -78,7 +84,7 @@
                     <div class="top-act__user">
                         <!-- Avatar and Profile link -->
                         <a asp-controller="Profile" asp-action="Index">
-                            <img src="~/assets/img/avatar.jpg" alt="" class="top-act__avatar"/>
+                            <img src="@user.AvatarUrl" alt="" class="top-act__avatar"/>
                         </a>
 
                         <!-- User Menu Dropdown -->
@@ -88,10 +94,10 @@
                                      class="act-dropdown__arrow top-act__dropdown-arrow">
 
                                 <div class="user-menu__top">
-                                    <img src="~/assets/img/avatar.jpg" alt="" class="user-menu__avatar">
+                                    <img src="@user.AvatarUrl" alt="" class="user-menu__avatar">
                                     <div>
-                                        <p class="user-menu__name">Name</p>
-                                        <p>&commat;username</p>
+                                        <p class="user-menu__name">@user.FullName</p>
+                                        <p>@user.Email</p>
                                     </div>
                                 </div>
 
@@ -127,3 +133,24 @@
         </div>
     </div>
 </div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.0/signalr.min.js"></script>
+<script>
+    const connection = new signalR.HubConnectionBuilder()
+        .withUrl("/notificationHub")
+        .build();
+
+    connection.start()
+        .then(() => console.log("Connected to SignalR"))
+        .catch(err => console.error("Error connecting to SignalR:", err));
+
+    // Lắng nghe cập nhật từ server
+    connection.on("ReceiveLikedProducts", (count) => {
+        const likedProductsElement = document.querySelector(".top-act__title");
+        if (likedProductsElement) {
+            likedProductsElement.textContent = count;
+        }
+    });
+</script>
+
+

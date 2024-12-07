@@ -1,4 +1,13 @@
-﻿@model ProductModel
+﻿@using Newtonsoft.Json
+@model ProductModel
+@{
+    var userJson = Context.Session.GetString("User");
+    var user = new ProfileModel();
+    if (!string.IsNullOrEmpty(userJson))
+    {
+        user = JsonConvert.DeserializeObject<ProfileModel>(userJson);
+    }
+}
 
 <link rel="stylesheet" href="~/css/product.css" asp-append-version="true">
 
@@ -122,22 +131,32 @@
                             </div>
                             <div class="prod-info__card">
                                 <div class="prod-info__row">
-                                    <span class="prod-info__price">1000</span>
+                                    <span class="prod-info__price">@string.Format("{0:C}", Model.Price)</span>
                                     <span class="prod-info__tax">10%</span>
                                 </div>
-                                <p class="prod-info__total-price">@Model.Price</p>
+                                <p class="prod-info__total-price">@string.Format("{0:C}", Model.Price)</p>
                                 <div class="prod-info__row">
                                     <button
                                         class="btn btn--primary prod-info__add-to-cart"
                                         \>
                                         Add to cart
                                     </button>
-                                    <button class="like-btn prod-info__like-btn">
-                                        <img
-                                            src="~/assets/icons/heart.svg"
-                                            alt=""
-                                            class="like-btn__icon icon"
-                                        />
+                                    <button class="like-btn prod-info__like-btn" data-product-id="@Model.Id">
+                                        @if (Model.UserLiked.Contains(user?.Id))
+                                        {
+                                            <img
+                                                src="~/assets/icons/red-heart.svg"
+                                                alt="Liked"
+                                                class="like-btn__icon icon"/>
+                                        }
+                                        else
+                                        {
+                                            <img
+                                                src="~/assets/icons/heart.svg"
+                                                alt="Not Liked"
+                                                class="like-btn__icon icon"/>
+                                        }
+
                                     </button>
                                 </div>
                             </div>
@@ -159,46 +178,76 @@
 
         <div class="row-info__description">
             <h2>
-                lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                @Model.Name
             </h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere hic illum ipsum necessitatibus neque,
-                perferendis quod sapiente sunt. Alias assumenda blanditiis delectus dolore eius harum in iste magnam
-                sint
-                voluptas!</p>
+            <p>@Model.Description</p>
 
-            <h3>Lorem ipsum dolor sit amet.</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus assumenda, beatae cum eos placeat
-                quis quos
-                tempora? Ad consequatur dicta doloremque necessitatibus optio quae, quaerat quidem quis ullam
-                voluptatum.</p>
+            @* <h3>Lorem ipsum dolor sit amet.</h3> *@
+            @* <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus assumenda, beatae cum eos placeat *@
+            @*     quis quos *@
+            @*     tempora? Ad consequatur dicta doloremque necessitatibus optio quae, quaerat quidem quis ullam *@
+            @*     voluptatum.</p> *@
 
-            <div class="image">
-                <img src="~/assets/img/product1.png"
-                     alt="">
-                <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span>
-            </div>
+            @* <div class="image"> *@
+            @*     <img src="~/assets/img/product1.png" *@
+            @*          alt=""> *@
+            @*     <span>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</span> *@
+            @* </div> *@
 
-            <div class="block-quotes">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, dolorum ipsam iusto neque rem
-                    sit
-                    tempore temporibus totam veritatis voluptas. Ad asperiores dignissimos error facere itaque minus
-                    nemo
-                    repudiandae voluptatibus.</p>
-            </div>
+            @* <div class="block-quotes"> *@
+            @*     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur, dolorum ipsam iusto neque rem *@
+            @*         sit *@
+            @*         tempore temporibus totam veritatis voluptas. Ad asperiores dignissimos error facere itaque minus *@
+            @*         nemo *@
+            @*         repudiandae voluptatibus.</p> *@
+            @* </div> *@
 
-            <h3>Lorem ipsum dolor sit amet.</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus assumenda, beatae cum eos placeat
-                quis quos
-                tempora? Ad consequatur dicta doloremque necessitatibus optio quae, quaerat quidem quis ullam
-                voluptatum.</p>
-
-            <p style="margin-bottom: 30px">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus
-                assumenda,
-                beatae cum eos placeat quis quos tempora? Ad consequatur dicta doloremque necessitatibus optio quae,
-                quaerat
-                quidem quis ullam voluptatum.</p>
+            @* <h3>Lorem ipsum dolor sit amet.</h3> *@
+            @* <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus assumenda, beatae cum eos placeat *@
+            @*     quis quos *@
+            @*     tempora? Ad consequatur dicta doloremque necessitatibus optio quae, quaerat quidem quis ullam *@
+            @*     voluptatum.</p> *@
+            @* *@
+            @* <p style="margin-bottom: 30px">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus *@
+            @*     assumenda, *@
+            @*     beatae cum eos placeat quis quos tempora? Ad consequatur dicta doloremque necessitatibus optio quae, *@
+            @*     quaerat *@
+            @*     quidem quis ullam voluptatum.</p> *@
 
         </div>
     </div>
 
 </div>
+
+<script>
+    const redHeartIcon = '@Url.Content("~/assets/icons/red-heart.svg")';
+    const heartIcon = '@Url.Content("~/assets/icons/heart.svg")';
+
+    document.querySelectorAll('.prod-info__like-btn').forEach(button => {
+        button.addEventListener('click', async (event) => {
+            const productId = button.getAttribute('data-product-id');
+            const response = await fetch(`/Product/Like?id=${productId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+
+            const result = await response.json();
+            if (result.success) {
+                // Update the icon based on the result
+                const img = button.querySelector('img');
+                if (img.alt === "Not Liked") {
+                    img.src = redHeartIcon; // Use the Razor-generated URL
+                    img.alt = 'Liked';
+                } else {
+                    img.src = heartIcon;
+                    img.alt = 'Not Liked';
+                }
+            } else {
+                console.error(result.error);
+                alert('An error occurred while updating the like status');
+            }
+        });
+    });
+</script>

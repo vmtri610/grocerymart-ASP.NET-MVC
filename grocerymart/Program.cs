@@ -1,3 +1,5 @@
+using grocerymart.services;
+using Newtonsoft.Json;
 using Supabase;
 using Supabase.Gotrue;
 using Client = Supabase.Client;
@@ -6,6 +8,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Configure services
 builder.Services.AddControllersWithViews();
+builder.Services.AddControllers()
+    .AddNewtonsoftJson(options =>
+        options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore);
+builder.Services.AddSignalR();
+
 
 // Add session services
 builder.Services.AddDistributedMemoryCache(); // Required for session storage
@@ -52,6 +59,8 @@ app.UseStaticFiles();
 app.UseRouting();
 app.UseSession(); // Enable session middleware
 app.UseAuthorization();
+app.MapHub<NotificationHub>("/notificationHub");
+
 
 app.Services.GetRequiredService<IHttpContextAccessor>(); // Ensures IHttpContextAccessor is available
 supabase.Auth.AddStateChangedListener((sender, changed) =>
@@ -62,11 +71,9 @@ supabase.Auth.AddStateChangedListener((sender, changed) =>
     switch (changed)
     {
         case Constants.AuthState.SignedIn:
-            var user = sender.CurrentUser;
-            if (user != null && context != null)
-            {
-                context.Session.SetString("UserId", user.Id); // Store user ID in session
-            }
+
+            if (sender.CurrentUser != null && context != null)
+                context.Session.SetString("UserId", sender.CurrentUser.Id); // Store user ID in session
 
             break;
         case Constants.AuthState.SignedOut:
@@ -82,6 +89,7 @@ supabase.Auth.AddStateChangedListener((sender, changed) =>
             break;
     }
 });
+
 
 // Map default controller route
 app.MapControllerRoute(
