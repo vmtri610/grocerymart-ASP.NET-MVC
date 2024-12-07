@@ -1,4 +1,14 @@
-﻿.logo {
+﻿.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #eee;
+    z-index: 1000;
+    padding: 0 90px;
+}
+
+.logo {
     display: flex;
     align-items: center;
     gap: 14px;
@@ -11,15 +21,10 @@
     line-height: 145.455%;
 }
 
-.header {
-    background-color: #eee;
-    padding: 0 40px;
-}
-
 .top-bar {
     display: flex;
     align-items: center;
-    padding: 30px 0;
+    padding: 24px 0;
 }
 
 .navbar {
@@ -124,9 +129,9 @@
 }
 
 .top-act__dropdown {
-    right: 16px !important;
+    right: 60px !important;
     width: min(300px, 100vw) !important;
-    top: 80px;
+    top: 72px;
 }
 
 .act-dropdown__top {
@@ -239,7 +244,7 @@
     right: 90px;
     height: 20px;
     width: 52px;
-    filter: brightness(90%) contrast(110%);
+    filter: brightness(92%) contrast(110%);
 }
 
 .top-act__dropdown-arrow {
