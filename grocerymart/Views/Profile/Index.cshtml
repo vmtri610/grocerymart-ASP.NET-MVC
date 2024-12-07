@@ -1,34 +1,38 @@
 ﻿<link rel="stylesheet" href="~/css/profile.css"/>
 
 <div class="profile-container">
-    <div class="profile-header">
-        <div class="profile-avatar">
-            <img src="~/assets/img/avatar.jpg" alt="Profile Picture" class="avatar-img">
+    <div class="sidebar">
+        <div class="profile-header">
+            <div class="avatar">
+                <img class="avatar-img" src="assets/img/avatar.jpg" alt="User Avatar"/>
+            </div>
+            <div class="profile-info">
+                <h3>John Doe</h3>
+                <p>Registered on: January 15, 2023</p>
+            </div>
         </div>
-        <div class="profile-info">
-            <h1 class="profile-name">John Doe</h1>
-            <p class="profile-email">johndoe@example.com</p>
-            <p class="profile-joined">Joined on: January 01, 2020</p>
-        </div>
-        <div class="profile-actions">
-            <button class="btn btn--primary" onclick="editProfile()">Edit Profile</button>
-            <button class="btn btn--secondary" onclick="logout()">Log Out</button>
-        </div>
+        <nav class="nav-links">
+            <ul>
+                <li><a href="#" id="profile-link" class="active" onclick="showContent('profile')">Profile</a></li>
+                <li><a href="#" id="history-link" onclick="showContent('history')">Order History</a></li>
+                <li><a href="#" id="favourites-link" onclick="showContent('favourites')">Favourites</a></li>
+                <li><a href="#" id="addresses-link" onclick="showContent('addresses')">Addresses</a></li>
+                <li><a href="#" id="settings-link" onclick="showContent('settings')">Settings</a></li>
+                <li><a href="#" id="logout-link" onclick="logout()">Logout</a></li>
+            </ul>
+        </nav>
     </div>
 
-    <div class="profile-body">
-        <div class="profile-section">
-            <h2 class="section-title">Personal Information</h2>
-            <ul class="info-list">
-                <li><strong>Phone:</strong> +1234567890</li>
-                <li><strong>Address:</strong> 123 Main Street</li>
-                <li><strong>City:</strong> New York</li>
-                <li><strong>Zip Code:</strong> 10001</li>
-            </ul>
+    <div class="main-content">
+        <div id="profile" class="content-section">
+            <h2>Profile Information</h2>
+            <p>Name: John Doe</p>
+            <p>Email: johndoe@example.com</p>
+            <p>Phone: +1 (555) 123-4567</p>
+            <p>Address: 123 Main St, Springfield, IL, USA</p>
         </div>
-
-        <div class="profile-section">
-            <h2 class="section-title">Order History</h2>
+        <div id="history" class="content-section" style="display:none;">
+            <h2>Order History</h2>
             <table class="orders-table">
                 <thead>
                 <tr>
@@ -64,15 +68,41 @@
                 </tbody>
             </table>
         </div>
+        <div id="favourites" class="content-section" style="display:none;">
+            <h2>Favourites</h2>
+            <ul>
+                <li>Product A - Price: $25.99</li>
+                <li>Product B - Price: $45.00</li>
+                <li>Product C - Price: $15.50</li>
+            </ul>
+        </div>
+        <div id="addresses" class="content-section" style="display:none;">
+            <h2>Addresses</h2>
+            <p>Home Address: 123 Main St, Springfield, IL, USA</p>
+            <p>Shipping Address: 456 Oak St, Springfield, IL, USA</p>
+        </div>
+        <div id="settings" class="content-section" style="display:none;">
+            <h2>Settings</h2>
+            <p>You can update your profile settings here.</p>
+        </div>
     </div>
 </div>
 
 <script>
-    function editProfile() {
-        alert('Edit Profile functionality is not implemented in this static version.');
+    function showContent(section) {
+        const sections = document.querySelectorAll('.content-section');
+        sections.forEach(section => section.style.display = 'none');
+
+        document.getElementById(section).style.display = 'block';
+
+        const links = document.querySelectorAll('.nav-links a');
+        links.forEach(link => link.classList.remove('active'));
+        document.getElementById(section + '-link').classList.add('active');
     }
 
     function logout() {
-        alert('Log Out functionality is not implemented in this static version.');
+        alert('Logged out');
     }
+
+    showContent('profile');
 </script>
