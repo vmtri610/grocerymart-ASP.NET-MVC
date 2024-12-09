@@ -220,3 +220,9 @@
 form {
     width: 100%;
 }
+
+.alert-danger {
+    color: #ff0000;
+    font-size: 0.9rem;
+    padding: 0 4px;
+}

@@ -10,19 +10,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8f66a49-29fe-4c25-a330-b04f88b30cce" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/grocerymart/Models/CartItemResponseModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/grocerymart/Models/CartModel.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/grocerymart/ViewModel/CartModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/grocerymart/Controllers/FavouriteLIstController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/grocerymart/Views/FavouriteList/Index.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/favourite_list.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.grocerymart/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.grocerymart/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Controllers/CheckoutController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Controllers/CheckoutController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Controllers/HomeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Controllers/ProductController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Controllers/ProductController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Views/Checkout/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Checkout/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Views/Product/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Product/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Views/Shared/_Header.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Shared/_Header.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/services/NotificationHub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/services/NotificationHub.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/checkout.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/checkout.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Views/SignUp/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/SignUp/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/assets/icons/red-heart.svg" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/assets/icons/red-heart.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/assets/img/banner.png" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/assets/img/banner.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/footer.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/sign_up.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/sign_up.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,8 +43,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://C:/Repos/Sem2441/Web/grocerymart/grocerymart/Views/Checkout/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Repos/Sem2441/Web/grocerymart/grocerymart/Views/Checkout/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Hhaozzzzzz/HSU/3rd_year/PTW/project/grocerymart-ASP.NET-MVC/grocerymart/Views/Profile/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Hhaozzzzzz/HSU/3rd_year/PTW/project/grocerymart-ASP.NET-MVC/grocerymart/Views/Profile/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Hhaozzzzzz/HSU/3rd_year/PTW/project/grocerymart-ASP.NET-MVC/grocerymart/Views/Profile/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
+    <setting file="mock://D:/Hhaozzzzzz/HSU/3rd_year/PTW/project/grocerymart-ASP.NET-MVC/grocerymart/Views/Profile/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/grocerymart/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.css.map" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/grocerymart/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.rtl.min.css.map" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/grocerymart/wwwroot/lib/bootstrap/dist/css/bootstrap-reboot.rtl.min.css.map" root0="FORCE_HIGHLIGHTING" />
@@ -160,8 +161,7 @@
       <workItem from="1733457083469" duration="256000" />
       <workItem from="1733487885288" duration="8536000" />
       <workItem from="1733496891810" duration="5548000" />
-      <workItem from="1733554186600" duration="18056000" />
-      <workItem from="1733713167796" duration="1417000" />
+      <workItem from="1733577777314" duration="333000" />
     </task>
     <servers />
   </component>
