@@ -44,8 +44,6 @@ public class CheckoutController : Controller
     // increment and decrement quantity of product in cart
     public async Task<IActionResult> UpdateQuantity(string productId, int quantity)
     {
-        Console.WriteLine(productId);
-        Console.WriteLine(quantity);
         try
         {
             var userId = HttpContext.Session.GetString("UserId");
