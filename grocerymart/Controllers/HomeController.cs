@@ -41,7 +41,17 @@ public class HomeController : Controller
             var countLikedProducts = int.Parse(countLikedProductsResponse.Content);
             HttpContext.Session.SetInt32("LikedProducts", countLikedProducts);
 
+
+            var countCartProductsResponse = await _supabaseClient.Rpc("count_products_in_cart",
+                new Dictionary<string, object> { { "p_id", userId } });
+
+
+            var countCartProducts = int.Parse(countCartProductsResponse.Content);
+            HttpContext.Session.SetInt32("CartItems", countCartProducts);
+
+
             await _hubContext.Clients.All.SendAsync("ReceiveLikedProducts", countLikedProducts);
+            await _hubContext.Clients.All.SendAsync("ReceiveCartProducts", countCartProducts);
 
             var products = await _supabaseClient.From<ProductModel>().Select("*")
                 .Order("created_at", Constants.Ordering.Ascending).Get();

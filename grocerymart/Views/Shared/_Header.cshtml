@@ -9,6 +9,7 @@
     }
 
     var likedProducts = Context.Session.GetInt32("LikedProducts");
+    var cartItems = Context.Session.GetInt32("CartItems");
 }
 
 <link rel="stylesheet" href="~/css/header.css"/>
@@ -70,7 +71,7 @@
                             <a asp-controller="FavouriteList" asp-action="Index">
                                 <button class="top-act__btn">
                                     <img src="~/assets/icons/heart.svg" alt="" class="top-act__icon"/>
-                                    <span class="top-act__title">@likedProducts</span>
+                                    <span class="top-act__title-liked">@likedProducts</span>
                                 </button>
                             </a>
 
@@ -136,7 +137,7 @@
                             <a asp-controller="Checkout" asp-action="Index">
                                 <button class="top-act__btn">
                                     <img src="~/assets/icons/buy.svg" alt="" class="top-act__icon"/>
-                                    <span class="top-act__title">0</span>
+                                    <span class="top-act__title-cart">@cartItems</span>
                                 </button>
                             </a>
 
@@ -277,9 +278,16 @@
 
     // Lắng nghe cập nhật từ server
     connection.on("ReceiveLikedProducts", (count) => {
-        const likedProductsElement = document.querySelector(".top-act__title");
+        const likedProductsElement = document.querySelector(".top-act__title-liked");
         if (likedProductsElement) {
             likedProductsElement.textContent = count;
+        }
+    });
+
+    connection.on("ReceiveCartProducts", (count) => {
+        const cartItemsElement = document.querySelector(".top-act__title-cart");
+        if (cartItemsElement) {
+            cartItemsElement.textContent = count;
         }
     });
 </script>
