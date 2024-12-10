@@ -1,6 +1,6 @@
 ﻿.checkout-container {
-    margin-top: 30px;
-    padding: 0 40px;
+    margin-top: 128px;
+    padding: 0 89px;
 }
 
 .checkout-container .row {
@@ -97,6 +97,7 @@
 
 .cart-info__row {
     display: flex;
+    width: 100%;
     align-items: center;
     justify-content: space-between;
     margin-top: 10px;
@@ -162,6 +163,18 @@
 
 .cart-info__check-all {
     margin: 30px 0;
+}
+
+.cart-info__checkbox-input {
+    appearance: none;
+}
+
+.cart-info__checkbox-input:not(:checked)::before {
+    filter: brightness(0) saturate(100%) invert(8%) sepia(10%) saturate(4042%) hue-rotate(212deg) brightness(90%) contrast(95%);
+}
+
+.cart-info__checkbox-input::before {
+    content: url(../assets/icons/checkbox-uncheck.svg);
 }
 
 .cart-info + .cart-info {
@@ -463,7 +476,7 @@
     gap: 10px;
     height: 46px;
     padding: 0 90px;
-    border-radius: 6px;
+    border-radius: 24px;
     font-size: 1.8rem;
     font-weight: 500;
     white-space: nowrap;

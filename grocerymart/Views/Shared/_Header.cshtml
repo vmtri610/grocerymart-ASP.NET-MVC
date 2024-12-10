@@ -67,12 +67,10 @@
 
                     <div class="top-act__group">
                         <div class="top-act__btn-wrap">
-                            <a asp-controller="FavouriteList" asp-action="Index">
                                 <button class="top-act__btn">
                                     <img src="~/assets/icons/heart.svg" alt="" class="top-act__icon"/>
                                     <span class="top-act__title">@likedProducts</span>
                                 </button>
-                            </a>
 
                             <!-- Dropdown -->
                             <div class="act-dropdown">
@@ -80,7 +78,7 @@
                                     <img src="./assets/icons/arrow-up.png" alt="" class="act-dropdown__arrow">
                                     <div class="act-dropdown__top">
                                         <h2 class="act-dropdown__title">You have 3 item(s)</h2>
-                                        <a href="./favourite" class="act-dropdown__view-all">See All</a>
+                                        <a href="./favouriteList" class="act-dropdown__view-all">See All</a>
                                     </div>
                                     <div class="row row-cols-3 gx-2 act-dropdown__list">
                                         <!-- Cart preview item 1 -->
@@ -133,12 +131,10 @@
                         <div class="top-act__separate"></div>
 
                         <div class="top-act__btn-wrap">
-                            <a asp-controller="Checkout" asp-action="Index">
                                 <button class="top-act__btn">
                                     <img src="~/assets/icons/buy.svg" alt="" class="top-act__icon"/>
                                     <span class="top-act__title">0</span>
                                 </button>
-                            </a>
 
                             <!-- Dropdown -->
                             <div class="act-dropdown">
@@ -216,9 +212,7 @@
 
 
                     <div class="top-act__user">
-                        <a asp-controller="Profile" asp-action="Index">
                             <img src="@user.AvatarUrl" alt="" class="top-act__avatar"/>
-                        </a>
 
                         <!-- Dropdown -->
                         <div class="act-dropdown top-act__dropdown">
@@ -237,10 +231,10 @@
                                 <ul class="user-menu__list">
                                     <li>
                                         <a asp-controller="Profile" asp-action="Index"
-                                           class="user-menu__link">Profile</a>
+                                           class="user-menu__link">Settings</a>
                                     </li>
                                     <li>
-                                        <a asp-controller="Favourite" asp-action="Index" class="user-menu__link">Favourite
+                                        <a asp-controller="FavouriteList" asp-action="Index" class="user-menu__link">Favourite
                                             list</a>
                                     </li>
                                     <li class="user-menu__separate">
