@@ -250,4 +250,19 @@
             }
         });
     });
+
+    document.querySelector('.prod-info__add-to-cart').addEventListener('click', async (event) => {
+        console.log('Add to cart clicked');
+        const productId = '@Model.Id'; // Define productId here
+        const response = await fetch(`/Product/AddToCart?id=${productId}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                productId: productId,
+                quantity: 1,
+            }),
+        });
+    });
 </script>

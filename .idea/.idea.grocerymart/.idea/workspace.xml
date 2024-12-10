@@ -11,12 +11,10 @@
   <component name="ChangeListManager">
     <list default="true" id="b8f66a49-29fe-4c25-a330-b04f88b30cce" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.grocerymart/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.grocerymart/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Views/Profile/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Profile/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/checkout.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/checkout.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/product.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/product.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/profile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/shipping.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/shipping.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Controllers/AuthController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Controllers/CheckoutController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Controllers/CheckoutController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Controllers/HomeController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Views/Shared/_Header.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Shared/_Header.cshtml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

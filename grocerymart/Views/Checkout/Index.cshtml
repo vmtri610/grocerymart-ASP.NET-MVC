@@ -1,4 +1,8 @@
-﻿<link rel="stylesheet" href="~/css/checkout.css" asp-append-version="true">
+﻿@model grocerymart.ViewModel.CartViewModel
+@{
+    var subtotal = Model.ProducsInCart.Sum(product => product.Price * product.Quantity);
+}
+<link rel="stylesheet" href="~/css/checkout.css" asp-append-version="true">
 
 <div class="container">
     <div class="checkout-container">
@@ -6,59 +10,65 @@
             <div class="left">
                 <div class="cart-info">
                     <div class="cart-info__list">
-                        <div class="cart-item">
-                            <a href="#">
-                                <img src="~/assets/img/product1.png" alt="" class="cart-item__thumb"/>
-                            </a>
-                            <div class="cart-item__content">
-                                <div class="cart-item__content-left">
-                                    <h3 class="cart-item__title">
-                                        Name
-                                    </h3>
-                                    <p class="cart-item__price-wrap">
-                                        <span class="cart-item__status">In Stock</span>
-                                    </p>
-                                    <div class="cart-item__ctrl">
-                                        <div class="cart-item__input">
-                                            Type
-                                            <img
-                                                class="icon"
-                                                src="~/assets/icons/arrow-down-2.svg"
-                                                alt=""
-                                            />
-                                        </div>
-                                        <div class="cart-item__input">
-                                            <button class="cart-item__input-btn">
-                                                <img class="icon" src="~/assets/icons/minus.svg" alt=""/>
-                                            </button>
-                                            <span>Quantity</span>
-                                            <button class="cart-item__input-btn">
-                                                <img class="icon" src="~/assets/icons/plus.svg" alt=""/>
-                                            </button>
+                        @foreach (var product in Model.ProducsInCart)
+                        {
+                            <div class="cart-item">
+                                <a href="#">
+                                    <img src="@product.Img" alt="" class="cart-item__thumb"/>
+                                </a>
+                                <div class="cart-item__content">
+                                    <div class="cart-item__content-left">
+                                        <h3 class="cart-item__title">
+                                            @product.Name
+                                        </h3>
+                                        <p class="cart-item__price-wrap">
+                                            <span class="cart-item__status">In Stock</span>
+                                        </p>
+                                        <div class="cart-item__ctrl">
+                                            @* <div class="cart-item__input"> *@
+                                            @*     Type *@
+                                            @*     <img *@
+                                            @*         class="icon" *@
+                                            @*         src="~/assets/icons/arrow-down-2.svg" *@
+                                            @*         alt=""/> *@
+                                            @* </div> *@
+                                            <div class="cart-item__input">
+                                                <button class="cart-item__input-btn-minus"
+                                                        data-product-id="@product.ProdId"
+                                                        data-quantity="-1">
+                                                    <img class="icon" src="~/assets/icons/minus.svg" alt=""/>
+                                                </button>
+                                                <span>@product.Quantity</span>
+                                                <button class="cart-item__input-btn-plus"
+                                                        data-product-id="@product.ProdId"
+                                                        data-quantity="1">
+                                                    <img class="icon" src="~/assets/icons/plus.svg" alt=""/>
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="cart-item__content-right">
-                                    <p class="cart-item__total-price">1000</p>
-                                    <div class="cart-item__ctrl">
-                                        <button class="cart-item__ctrl-btn">
-                                            <img src="~/assets/icons/heart-2.svg" alt=""/>
-                                            Save
-                                        </button>
-                                        <button class="cart-item__ctrl-btn">
-                                            <img src="~/assets/icons/trash.svg" alt=""/>
-                                            Delete
-                                        </button>
+                                    <div class="cart-item__content-right">
+                                        <p class="cart-item__total-price">@string.Format("{0:C}", product.Price * product.Quantity)</p>
+                                        <div class="cart-item__ctrl">
+                                            @* <button class="cart-item__ctrl-btn"> *@
+                                            @*     <img src="~/assets/icons/heart-2.svg" alt=""/> *@
+                                            @*     Save *@
+                                            @* </button> *@
+                                            <button class="cart-item__ctrl-btn" data-product-id="@product.ProdId" data-quantity="-@product.Quantity">
+                                                <img src="~/assets/icons/trash.svg" alt=""/>
+                                                Delete
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        }
                     </div>
 
                     <div class="cart-info__bottom d-md-none">
                         <div class="cart-row">
                             <div>
-                                <div class="cart-info__continue">
+                                <a class="cart-info__continue" asp-controller="Home" asp-action="Index">
                                     <div class="cart-info__continue-link" href="#">
                                         <img
                                             class="cart-info__continue-icon icon"
@@ -67,12 +77,12 @@
                                         />
                                         Continue Shopping
                                     </div>
-                                </div>
+                                </a>
                             </div>
                             <div>
                                 <div class="cart-info__row">
                                     <span>Subtotal:</span>
-                                    <span>10000</span>
+                                    <span>@string.Format("{0:C}", subtotal)</span>
                                 </div>
                                 <div class="cart-info__row">
                                     <span>Shipping:</span>
@@ -81,7 +91,7 @@
                                 <div class="cart-info__separate"></div>
                                 <div class="cart-info__row cart-info__row--bold">
                                     <span>Total:</span>
-                                    <span>10000</span>
+                                    <span>@string.Format("{0:C}", subtotal + 10)</span>
                                 </div>
                             </div>
                         </div>
@@ -92,11 +102,11 @@
                 <div class="cart-info">
                     <div class="cart-info__row">
                         <span>Subtotal <span class="cart-info__sub-label">(items)</span></span>
-                        <span>5</span>
+                        <span>@Model.ProducsInCart.Count</span>
                     </div>
                     <div class="cart-info__row">
                         <span>Price <span class="cart-info__sub-label">(Total)</span></span>
-                        <span>1000</span>
+                        <span>@string.Format("{0:C}", subtotal)</span>
                     </div>
                     <div class="cart-info__row">
                         <span>Shipping</span>
@@ -105,9 +115,9 @@
                     <div class="cart-info__separate"></div>
                     <div class="cart-info__row">
                         <span>Estimated Total</span>
-                        <span>10000</span>
+                        <span>@string.Format("{0:C}", subtotal + 10)</span>
                     </div>
-                    <a href="./shipping" class="cart-info__next-btn btn btn--primary btn--rounded">
+                    <a href="#" class="cart-info__next-btn btn btn--primary btn--rounded">
                         Continue to checkout
                     </a>
                 </div>
@@ -130,3 +140,65 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.querySelectorAll('.cart-item__input-btn-minus').forEach(button => {
+        button.addEventListener('click', async (event) => {
+            const productId = button.getAttribute('data-product-id');
+            const quantity = parseInt(button.getAttribute('data-quantity'), 10);
+
+            const response = await fetch(`/Checkout/UpdateQuantity?productId=${productId}&quantity=${quantity}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.ok) {
+                window.location.reload();
+            } else {
+                console.error('Failed to update quantity');
+            }
+        });
+    });
+
+    document.querySelectorAll('.cart-item__input-btn-plus').forEach(button => {
+        button.addEventListener('click', async (event) => {
+            const productId = button.getAttribute('data-product-id');
+            const quantity = parseInt(button.getAttribute('data-quantity'), 10);
+
+            const response = await fetch(`/Checkout/UpdateQuantity?productId=${productId}&quantity=${quantity}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.ok) {
+                window.location.reload();
+            } else {
+                console.error('Failed to update quantity');
+            }
+        });
+    });
+
+    document.querySelectorAll('.cart-item__ctrl-btn').forEach(button => {
+        button.addEventListener('click', async (event) => {
+            const productId = button.getAttribute('data-product-id');
+            const quantity = parseInt(button.getAttribute('data-quantity'), 10);
+
+            const response = await fetch(`/Checkout/UpdateQuantity?productId=${productId}&quantity=${quantity}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+            });
+
+            if (response.ok) {
+                window.location.reload();
+            } else {
+                console.error('Failed to update quantity');
+            }
+        });
+    });
+</script>

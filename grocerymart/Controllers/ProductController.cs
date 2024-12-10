@@ -14,7 +14,8 @@ public class ProductController : Controller
     private readonly Client _supabaseClient;
 
 
-    public ProductController(Client supabaseClient, IHubContext<NotificationHub> hubContext,  ILogger<HomeController> logger)
+    public ProductController(Client supabaseClient, IHubContext<NotificationHub> hubContext,
+        ILogger<HomeController> logger)
     {
         _supabaseClient = supabaseClient;
         _hubContext = hubContext;
@@ -44,7 +45,6 @@ public class ProductController : Controller
 
     public async Task<IActionResult> Like(string id)
     {
-        Console.WriteLine("Like product with id: " + id);
         try
         {
             var userId = HttpContext.Session.GetString("UserId");
@@ -57,10 +57,36 @@ public class ProductController : Controller
             var countLikedProducts = int.Parse(countLikedProductsResponse.Content);
             HttpContext.Session.SetInt32("LikedProducts", countLikedProducts);
 
-            
-            _logger.LogInformation("Sending SignalR event: ReceiveLikedProducts with count = {countLikedProducts}", countLikedProducts);
+
+            _logger.LogInformation("Sending SignalR event: ReceiveLikedProducts with count = {countLikedProducts}",
+                countLikedProducts);
             await _hubContext.Clients.All.SendAsync("ReceiveLikedProducts", countLikedProducts);
             _logger.LogInformation("SignalR event sent successfully.");
+
+            return Json(new { success = true });
+        }
+        catch (Exception e)
+        {
+            return Json(new { success = false, error = e.Message });
+        }
+    }
+
+    // add product to cart
+    public async Task<IActionResult> AddToCart(string id)
+    {
+        try
+        {
+            var userId = HttpContext.Session.GetString("UserId");
+            await _supabaseClient.Rpc("add_product_to_cart",
+                new Dictionary<string, object> { { "p_pro_id", id }, { "p_id", userId }, { "p_quantity", 1 } });
+
+            var countCartProductsResponse = await _supabaseClient.Rpc("count_products_in_cart",
+                new Dictionary<string, object> { { "p_id", userId } });
+
+            var countCartProducts = int.Parse(countCartProductsResponse.Content);
+            HttpContext.Session.SetInt32("CartItems", countCartProducts);
+
+            await _hubContext.Clients.All.SendAsync("ReceiveCartProducts", countCartProducts);
 
             return Json(new { success = true });
         }
