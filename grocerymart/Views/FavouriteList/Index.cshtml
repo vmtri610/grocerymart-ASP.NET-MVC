@@ -1,37 +1,98 @@
 ﻿@{
     var favouriteProducts = new List<dynamic>
     {
-        new { Id = 1, Name = "Coffee Beans - Espresso Arabica and Robusta Beans", Price = 200.000, ImageUrl = "/assets/img/product1.png" },
-        new { Id = 2, Name = "Coffee Beans Espresso", Price = 0.5, ImageUrl = "/assets/img/product2.png" },
-        new { Id = 3, Name = "Qualità Oro Mountain", Price = 0.8, ImageUrl = "/assets/img/product3.png" }
+        new { Id = 1, Name = "Coffee Beans - Espresso Arabica and Robusta Beans", Price = 200.000, ImageUrl = "~/assets/img/product1.png" },
+        new { Id = 2, Name = "Coffee Beans Espresso", Price = 0.5, ImageUrl = "~/assets/img/product2.png" },
+        new { Id = 3, Name = "Qualità Oro Mountain", Price = 0.8, ImageUrl = "~/assets/img/product3.png" }
     };
 }
 
-<link rel="stylesheet" href="~/css/favourite_list.css"/>
+<link rel="stylesheet" href="~/css/checkout.css"/>
 
-<main class="favourite-list">
-    <h1 class="favourite-list__title">Your Favourite List</h1>
+<div class="checkout-container">
+    <div class="left">
+        <div class="cart-info">
+            <h1 class="cart-info__heading">Favourite List</h1>
+            <p class="cart-info__desc">3 items</p>
+            <div class="cart-info__check-all">
+                <label class="cart-info__checkbox">
+                    <input type="checkbox" name="shipping-adress" class="cart-info__checkbox-input">
+                </label>
+            </div>
+            <div class="cart-info__list">
+                @foreach (var product in favouriteProducts)
+                {
+                    <div class="cart-item">
+                        <label class="cart-info__checkbox">
+                            <input type="checkbox" name="shipping-adress" class="cart-info__checkbox-input" checked="">
+                        </label>
+                        <a href="#">
+                            <img src="@Url.Content(product.ImageUrl)" alt="" class="cart-item__thumb"/>
+                        </a>
+                        <div class="cart-item__content">
+                            <div class="cart-item__content-left">
+                                <h3 class="cart-item__title">
+                                    @product.Name
+                                </h3>
+                                <p class="cart-item__price-wrap">
+                                    @product.Price | <span class="cart-item__status">In Stock</span>
+                                </p>
+                                <div class="cart-item__ctrl">
+                                    <div class="cart-item__input">
+                                        Type
+                                        <img
+                                            class="icon"
+                                            src="~/assets/icons/arrow-down-2.svg"
+                                            alt=""/>
+                                    </div>
+                                    <div class="cart-item__input">
+                                        <button class="cart-item__input-btn">
+                                            <img class="icon" src="~/assets/icons/minus.svg" alt=""/>
+                                        </button>
+                                        <span>Quantity</span>
+                                        <button class="cart-item__input-btn">
+                                            <img class="icon" src="~/assets/icons/plus.svg" alt=""/>
+                                        </button>
+                                    </div>
+                                    <button class="cart-item__ctrl-btn">
+                                        <img src="~/assets/icons/heart-2.svg" alt=""/>
+                                        Save
+                                    </button>
+                                    <button class="cart-item__ctrl-btn">
+                                        <img src="~/assets/icons/trash.svg" alt=""/>
+                                        Delete
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="cart-item__content-right">
+                                <p class="cart-item__total-price">123.000</p>
+                                <button class="cart-item__checkout-btn btn btn--primary btn--rounded">
+                                    Check Out
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
 
-    <section class="favourite-list__items">
-        @foreach (var product in favouriteProducts)
-        {
-            <div class="favourite-item">
-                <img src="@product.ImageUrl" alt="@product.Name" class="favourite-item__img"/>
-                <div class="favourite-item__details">
-                    <h2 class="favourite-item__name">@product.Name</h2>
-                    <p class="favourite-item__price">$@product.Price.ToString("F2")</p>
+            <div class="cart-info__bottom d-md-none">
+                <div class="cart-row">
+                    <div class="cart-info__row cart-info__row-md--block">
+                        <div class="cart-info__continue">
+                            <a class="cart-info__continue-link" href="/home">
+                                <img
+                                    class="cart-info__continue-icon icon"
+                                    src="~/assets/icons/arrow-down-2.svg"
+                                    alt=""/>
+                                Continue Shopping
+                            </a>
+                        </div>
+                        <a href="./checkout" class="cart-info__checkout-all btn btn--primary btn--rounded">
+                            All Check Out
+                        </a>
+                    </div>
                 </div>
             </div>
-        }
-    </section>
-</main>
-
-<script>
-    function removeItem(button) {
-        const item = button.closest('.favourite-item');
-        item.remove();
-        if (document.querySelectorAll('.favourite-item').length === 0) {
-            document.querySelector('.favourite-list__items').innerHTML = '<p>No favourite items found.</p>';
-        }
-    }
-</script>
+        </div>
+    </div>
+</div>
