@@ -1,7 +1,9 @@
 ﻿using grocerymart.Models;
 using grocerymart.services;
+using grocerymart.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
+using Newtonsoft.Json;
 using Supabase.Postgrest;
 using Client = Supabase.Client;
 
@@ -63,6 +65,16 @@ public class ProductController : Controller
             await _hubContext.Clients.All.SendAsync("ReceiveLikedProducts", countLikedProducts);
             _logger.LogInformation("SignalR event sent successfully.");
 
+            var result = await _supabaseClient.Rpc<List<CartItemResponseModel>>("get_products_in_cart",
+                new Dictionary<string, object> { { "p_id", userId } });
+
+            var cartViewModel = new CartViewModel
+            {
+                ProducsInCart = result
+            };
+
+            HttpContext.Session.SetString("CartItems", JsonConvert.SerializeObject(cartViewModel.ProducsInCart));
+
             return Json(new { success = true });
         }
         catch (Exception e)
@@ -76,6 +88,7 @@ public class ProductController : Controller
     {
         try
         {
+            Console.WriteLine("Add to cart: " + id);
             var userId = HttpContext.Session.GetString("UserId");
             await _supabaseClient.Rpc("add_product_to_cart",
                 new Dictionary<string, object> { { "p_pro_id", id }, { "p_id", userId }, { "p_quantity", 1 } });
@@ -87,6 +100,16 @@ public class ProductController : Controller
             HttpContext.Session.SetInt32("CartItems", countCartProducts);
 
             await _hubContext.Clients.All.SendAsync("ReceiveCartProducts", countCartProducts);
+
+            var result = await _supabaseClient.Rpc<List<CartItemResponseModel>>("get_products_in_cart",
+                new Dictionary<string, object> { { "p_id", userId } });
+
+            var cartViewModel = new CartViewModel
+            {
+                ProducsInCart = result
+            };
+
+            HttpContext.Session.SetString("CartItems", JsonConvert.SerializeObject(cartViewModel.ProducsInCart));
 
             return Json(new { success = true });
         }

@@ -25,13 +25,13 @@
                                             <span class="cart-item__status">In Stock</span>
                                         </p>
                                         <div class="cart-item__ctrl">
-                                            @* <div class="cart-item__input"> *@
-                                            @*     Type *@
-                                            @*     <img *@
-                                            @*         class="icon" *@
-                                            @*         src="~/assets/icons/arrow-down-2.svg" *@
-                                            @*         alt=""/> *@
-                                            @* </div> *@
+                                            <div class="cart-item__input">
+                                                @product.Type
+                                                @* <img *@
+                                                @*     class="icon" *@
+                                                @*     src="~/assets/icons/arrow-down-2.svg" *@
+                                                @*     alt=""/> *@
+                                            </div>
                                             <div class="cart-item__input">
                                                 <button class="cart-item__input-btn-minus"
                                                         data-product-id="@product.ProdId"
@@ -54,7 +54,8 @@
                                             @*     <img src="~/assets/icons/heart-2.svg" alt=""/> *@
                                             @*     Save *@
                                             @* </button> *@
-                                            <button class="cart-item__ctrl-btn" data-product-id="@product.ProdId" data-quantity="-@product.Quantity">
+                                            <button class="cart-item__ctrl-btn" data-product-id="@product.ProdId"
+                                                    data-quantity="-@product.Quantity">
                                                 <img src="~/assets/icons/trash.svg" alt=""/>
                                                 Delete
                                             </button>

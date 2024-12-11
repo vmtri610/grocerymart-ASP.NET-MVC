@@ -8,7 +8,7 @@
         user = JsonConvert.DeserializeObject<ProfileModel>(userJson);
     }
 
-    var likedProducts = Context.Session.GetInt32("LikedProducts");
+    var totalLikedProducts = Context.Session.GetInt32("LikedProducts");
     var cartItems = Context.Session.GetInt32("TotalCartItems");
 
     var cartItemsJson = Context.Session.GetString("CartItems");
@@ -17,7 +17,15 @@
     {
         productsInCart = JsonConvert.DeserializeObject<List<CartItemResponseModel>>(cartItemsJson);
     }
+
     var subTotal = productsInCart.Sum(p => p.Price * p.Quantity);
+
+    var listLikedProducts = Context.Session.GetString("LikedItems");
+    var likedProducts = new List<ProductResponseModel>();
+    if (!string.IsNullOrEmpty(listLikedProducts))
+    {
+        likedProducts = JsonConvert.DeserializeObject<List<ProductResponseModel>>(listLikedProducts);
+    }
 }
 
 <link rel="stylesheet" href="~/css/header.css"/>
@@ -68,67 +76,46 @@
             @if (!string.IsNullOrEmpty(user?.FullName))
             {
                 <div class="top-act">
-                    <div class="top-act__group top-act__group--single">
-                        <button class="top-act__btn">
-                            <img src="~/assets/icons/search.svg" alt="" class="top-act__icon"/>
-                        </button>
-                    </div>
+                    @* <div class="top-act__group top-act__group--single"> *@
+                    @*     <button class="top-act__btn"> *@
+                    @*         <img src="~/assets/icons/search.svg" alt="" class="top-act__icon"/> *@
+                    @*     </button> *@
+                    @* </div> *@
 
                     <div class="top-act__group">
                         <div class="top-act__btn-wrap">
-                                <button class="top-act__btn">
-                                    <img src="~/assets/icons/heart.svg" alt="" class="top-act__icon"/>
-                                    <span class="top-act__title-liked">@likedProducts</span>
-                                </button>
+                            <button class="top-act__btn">
+                                <img src="~/assets/icons/heart.svg" alt="" class="top-act__icon"/>
+                                <span class="top-act__title-liked">@totalLikedProducts</span>
+                            </button>
 
                             <!-- Dropdown -->
                             <div class="act-dropdown">
                                 <div class="act-dropdown__inner">
                                     <img src="./assets/icons/arrow-up.png" alt="" class="act-dropdown__arrow">
                                     <div class="act-dropdown__top">
-                                        <h2 class="act-dropdown__title">You have 3 item(s)</h2>
-                                        <a href="./favouriteList" class="act-dropdown__view-all">See All</a>
+                                        <h2 class="act-dropdown__title">You have @totalLikedProducts item(s)</h2>
+                                        <a asp-action="Index" asp-controller="FavouriteList"
+                                           class="act-dropdown__view-all">See All</a>
                                     </div>
                                     <div class="row row-cols-3 gx-2 act-dropdown__list">
-                                        <!-- Favourite preview item 1 -->
-                                        <div class="col">
-                                            <article class="cart-preview-item">
-                                                <div class="cart-preview-item__img-wrap">
-                                                    <img src="./assets/img/product1.png" alt=""
-                                                         class="cart-preview-item__thumb">
-                                                </div>
-                                                <h3 class="cart-preview-item__title">Lavazza Coffee Blends</h3>
-                                                <p class="cart-preview-item__price">$329.00</p>
-                                            </article>
-                                        </div>
-
-                                        <!-- Favourite preview item 2 -->
-                                        <div class="col">
-                                            <article class="cart-preview-item">
-                                                <div class="cart-preview-item__img-wrap">
-                                                    <img src="./assets/img/product2.png" alt=""
-                                                         class="cart-preview-item__thumb">
-                                                </div>
-                                                <h3 class="cart-preview-item__title">Coffee Beans Espresso</h3>
-                                                <p class="cart-preview-item__price">$39.99</p>
-                                            </article>
-                                        </div>
-
-                                        <!-- Favourite preview item 3 -->
-                                        <div class="col">
-                                            <article class="cart-preview-item">
-                                                <div class="cart-preview-item__img-wrap">
-                                                    <img src="./assets/img/product3.png" alt=""
-                                                         class="cart-preview-item__thumb">
-                                                </div>
-                                                <h3 class="cart-preview-item__title">Qualità Oro Mountain</h3>
-                                                <p class="cart-preview-item__price">$47.00</p>
-                                            </article>
-                                        </div>
+                                        @foreach (var product in likedProducts.Take(3))
+                                        {
+                                            <div class="col">
+                                                <article class="cart-preview-item">
+                                                    <div class="cart-preview-item__img-wrap">
+                                                        <img src="@product.Img_url" alt=""
+                                                             class="cart-preview-item__thumb">
+                                                    </div>
+                                                    <h3 class="cart-preview-item__title">@product.Name</h3>
+                                                    <p class="cart-preview-item__price">@string.Format("{0:C}", product.Price)</p>
+                                                </article>
+                                            </div>
+                                        }
                                     </div>
                                     <div class="act-dropdown__separate"></div>
                                     <div class="act-dropdown__checkout">
-                                        <a href="./checkout"
+                                        <a asp-action="Index" asp-controller="Checkout"
                                            class="btn btn--primary btn--rounded act-dropdown__checkout-btn">
                                             Check Out All
                                         </a>
@@ -140,10 +127,10 @@
                         <div class="top-act__separate"></div>
 
                         <div class="top-act__btn-wrap">
-                                <button class="top-act__btn">
-                                    <img src="~/assets/icons/buy.svg" alt="" class="top-act__icon"/>
-                                    <span class="top-act__title-cart">@cartItems</span>
-                                </button>
+                            <button class="top-act__btn">
+                                <img src="~/assets/icons/buy.svg" alt="" class="top-act__icon"/>
+                                <span class="top-act__title-cart">@cartItems</span>
+                            </button>
 
                             <!-- Dropdown -->
                             <div class="act-dropdown">
@@ -151,10 +138,11 @@
                                     <img src="./assets/icons/arrow-up.png" alt="" class="act-dropdown__arrow">
                                     <div class="act-dropdown__top">
                                         <h2 class="act-dropdown__title">You have @cartItems item(s)</h2>
-                                        <a href="./checkout" class="act-dropdown__view-all">See All</a>
+                                        <a asp-action="Index" asp-controller="Checkout" class="act-dropdown__view-all">See
+                                            All</a>
                                     </div>
                                     <div class="row row-cols-3 gx-2 act-dropdown__list">
-                                        @foreach(var product in productsInCart.Take(3))
+                                        @foreach (var product in productsInCart.Take(3))
                                         {
                                             <div class="col">
                                                 <article class="cart-preview-item">
@@ -183,11 +171,12 @@
                                         </div>
                                         <div class="act-dropdown__row act-dropdown__row--bold">
                                             <span class="act-dropdown__label">Total Price</span>
-                                            <span class="act-dropdown__value">@string.Format("{0:C}", subTotal + 10)</span>
+                                            <span
+                                                class="act-dropdown__value">@string.Format("{0:C}", subTotal + 10)</span>
                                         </div>
                                     </div>
                                     <div class="act-dropdown__checkout">
-                                        <a href="./checkout"
+                                        <a asp-action="Index" asp-controller="Checkout"
                                            class="btn btn--primary btn--rounded act-dropdown__checkout-btn">
                                             Check Out All
                                         </a>
@@ -199,7 +188,7 @@
 
 
                     <div class="top-act__user">
-                            <img src="@user.AvatarUrl" alt="" class="top-act__avatar"/>
+                        <img src="@user.AvatarUrl" alt="" class="top-act__avatar"/>
 
                         <!-- Dropdown -->
                         <div class="act-dropdown top-act__dropdown">
@@ -211,7 +200,7 @@
                                     <img src="@user.AvatarUrl" alt="" class="user-menu__avatar">
                                     <div>
                                         <p class="user-menu__name">@user.FullName</p>
-                                        <p>@user.Email</p>
+                                        <p>@user.Username</p>
                                     </div>
                                 </div>
 
@@ -264,11 +253,85 @@
         }
     });
 
+    connection.on("ReceiveLikedProducts", (count) => {
+        const likedProductsElement = document.querySelector(".act-dropdown__title");
+        if (likedProductsElement) {
+            likedProductsElement.textContent = `You have ${count} item(s)`;
+        }
+    });
+
     connection.on("ReceiveCartProducts", (count) => {
         const cartItemsElement = document.querySelector(".top-act__title-cart");
         if (cartItemsElement) {
             cartItemsElement.textContent = count;
         }
+    });
+
+    onnection.on("ReceiveCartProducts", (count) => {
+        const cartItemsElement = document.querySelector(".act-dropdown__title");
+        if (cartItemsElement) {
+            cartItemsElement.textContent = `You have ${count} item(s)`;
+        }
+    });
+
+    connection.on("LikedProductsChanged", (products) => {
+        // Locate the container to update
+        const cartPreviewContainer = document.querySelector('.act-dropdown__list');
+
+        // Clear existing items
+        cartPreviewContainer.innerHTML = '';
+
+        // Limit to 3 products and dynamically populate the cart preview
+        products.slice(0, 3).forEach(product => {
+            // Create product HTML structure
+            const productHTML = `
+                <div class="col">
+                    <article class="cart-preview-item">
+                        <div class="cart-preview-item__img-wrap">
+                            <img src="${product.img_url}" alt="" class="cart-preview-item__thumb">
+                        </div>
+                        <h3 class="cart-preview-item__title">${product.name}</h3>
+                        <p class="cart-preview-item__price">${new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD'
+            }).format(product.price)}</p>
+                    </article>
+                </div>
+            `;
+
+            // Append to the container
+            cartPreviewContainer.insertAdjacentHTML('beforeend', productHTML);
+        });
+    });
+
+    connection.on("CartProductsChanged", (products) => {
+        // Locate the container to update
+        const cartPreviewContainer = document.querySelector('.act-dropdown__list');
+
+        // Clear existing items
+        cartPreviewContainer.innerHTML = '';
+
+        // Limit to 3 products and dynamically populate the cart preview
+        products.slice(0, 3).forEach(product => {
+            // Create product HTML structure
+            const productHTML = `
+                <div class="col">
+                    <article class="cart-preview-item">
+                        <div class="cart-preview-item__img-wrap">
+                            <img src="${product.img}" alt="" class="cart-preview-item__thumb">
+                        </div>
+                        <h3 class="cart-preview-item__title">${product.name}</h3>
+                        <p class="cart-preview-item__price">${new Intl.NumberFormat('en-US', {
+                style: 'currency',
+                currency: 'USD'
+            }).format(product.price)}</p>
+                    </article>
+                </div>
+            `;
+
+            // Append to the container
+            cartPreviewContainer.insertAdjacentHTML('beforeend', productHTML);
+        });
     });
 </script>
 
