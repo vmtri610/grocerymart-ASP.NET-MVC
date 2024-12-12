@@ -10,11 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8f66a49-29fe-4c25-a330-b04f88b30cce" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/grocerymart/Controllers/PaymentController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/grocerymart/Views/Payment/Index.cshtml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/payment.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.grocerymart/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.grocerymart/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Controllers/AuthController.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Controllers/CheckoutController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Controllers/CheckoutController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Controllers/HomeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Views/Shared/_Header.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Shared/_Header.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/checkout.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/checkout.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/header.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,6 +157,9 @@
       <workItem from="1733496891810" duration="5548000" />
       <workItem from="1733577777314" duration="567000" />
       <workItem from="1733814566721" duration="7688000" />
+      <workItem from="1733883840087" duration="749000" />
+      <workItem from="1733898654217" duration="275000" />
+      <workItem from="1733928289860" duration="3028000" />
     </task>
     <servers />
   </component>

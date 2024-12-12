@@ -122,7 +122,7 @@
     position: absolute;
     top: 48px;
     right: -80px;
-    width: min(500px, 100vw);
+    width: min(450px, 100vw);
     padding-top: 28px;
     display: none;
     z-index: 2;
