@@ -57,7 +57,7 @@
                         <p class="product__name">@product.Name</p>
                         <span class="product__type">@product.Type</span>
                         <div class="product__row">
-                            <span class="product__row--cost">@string.Format("{0:C}", product.Price)</span>
+                            <span class="product__row--cost">@string.Format("{0:N0}đ", product.Price)</span>
                             @* <button class="product__row--rating"> *@
                             @*     <img src="~/assets/icons/star.svg" alt="">@product.Rate.ToString("F1") *@
                             @* </button> *@
