@@ -108,7 +108,8 @@
                                                              class="cart-preview-item__thumb">
                                                     </div>
                                                     <h3 class="cart-preview-item__title">@product.Name</h3>
-                                                    <p class="cart-preview-item__price">@string.Format("{0:C}", product.Price)</p>
+                                                    <p class="cart-preview-item__price">@string.Format("{0:N0}đ", product.Price)
+                                                    </p>
                                                 </article>
                                             </div>
                                         }
@@ -151,7 +152,7 @@
                                                              class="cart-preview-item__thumb">
                                                     </div>
                                                     <h3 class="cart-preview-item__title">@product.Name</h3>
-                                                    <p class="cart-preview-item__price">@string.Format("{0:C}", product.Price)</p>
+                                                    <p class="cart-preview-item__price">@string.Format("{0:N0}đ", product.Price)</p>
                                                 </article>
                                             </div>
                                         }
@@ -159,20 +160,20 @@
                                     <div class="act-dropdown__bottom">
                                         <div class="act-dropdown__row">
                                             <span class="act-dropdown__label">Subtotal</span>
-                                            <span class="act-dropdown__value">@string.Format("{0:C}", subTotal)</span>
+                                            <span class="act-dropdown__value">@string.Format("{0:N0}đ", subTotal)</span>
                                         </div>
                                         <div class="act-dropdown__row">
-                                            <span class="act-dropdown__label">Texes</span>
+                                            <span class="act-dropdown__label">Taxes</span>
                                             <span class="act-dropdown__value">Free</span>
                                         </div>
                                         <div class="act-dropdown__row">
                                             <span class="act-dropdown__label">Shipping</span>
-                                            <span class="act-dropdown__value">$10.00</span>
+                                            <span class="act-dropdown__value">@string.Format("{0:N0}đ", 30000)</span>
                                         </div>
                                         <div class="act-dropdown__row act-dropdown__row--bold">
                                             <span class="act-dropdown__label">Total Price</span>
                                             <span
-                                                class="act-dropdown__value">@string.Format("{0:C}", subTotal + 10)</span>
+                                                class="act-dropdown__value">@string.Format("{0:N0}đ", subTotal + 10)</span>
                                         </div>
                                     </div>
                                     <div class="act-dropdown__checkout">

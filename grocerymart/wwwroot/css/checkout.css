@@ -113,10 +113,9 @@
 }
 
 .cart-info__separate {
-    margin: 30px 0 0 120px;
+    margin-top: 30px;
     height: 1px;
     background: #d2d1d6;
-    width: 295px;
 }
 
 .cart-info__continue {
@@ -167,10 +166,15 @@
 
 .cart-info__checkbox-input {
     appearance: none;
+    cursor: pointer;
 }
 
 .cart-info__checkbox-input:not(:checked)::before {
     filter: brightness(0) saturate(100%) invert(8%) sepia(10%) saturate(4042%) hue-rotate(212deg) brightness(90%) contrast(95%);
+}
+
+.cart-info__checkbox-input:checked::before {
+    content: url(../assets/icons/checkbox-checked.svg);
 }
 
 .cart-info__checkbox-input::before {
@@ -214,6 +218,7 @@
     font-size: 1.8rem;
     font-weight: 500;
     line-height: 144.444%;
+    padding-right: 12px;
 }
 
 .cart-item__price-wrap {
@@ -400,7 +405,7 @@
     margin-top: 30px;
     padding: 20px;
     border-radius: 20px;
-    background: var(--checkout-payment-item-bg);
+    background: #f6f6f6;
 }
 
 .payment-item--pointer {

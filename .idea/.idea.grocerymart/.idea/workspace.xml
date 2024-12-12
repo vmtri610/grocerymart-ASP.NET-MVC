@@ -10,23 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8f66a49-29fe-4c25-a330-b04f88b30cce" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/grocerymart/Models/ProductResponseModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.grocerymart/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.grocerymart/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Controllers/CheckoutController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Controllers/CheckoutController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Controllers/FavouriteLIstController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Controllers/FavouriteListController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Controllers/HomeController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Controllers/HomeController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Controllers/ProductController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Controllers/ProductController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Controllers/ProfileController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Controllers/ProfileController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Controllers/SignUpController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Controllers/SignUpController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Models/CartItemResponseModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Models/CartItemResponseModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Models/ProfileModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Models/ProfileModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/ViewModel/ProductModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/ViewModel/ProductModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Views/Checkout/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Checkout/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Views/FavouriteList/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/FavouriteList/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Views/Product/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Product/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grocerymart/Views/Profile/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Profile/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Views/Shared/_Header.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Shared/_Header.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Views/SignUp/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/SignUp/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/services/NotificationHub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/services/NotificationHub.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/product.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/product.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/profile.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

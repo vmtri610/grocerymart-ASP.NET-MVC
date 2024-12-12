@@ -33,27 +33,41 @@
 
     <div class="main-content">
         <div id="profile" class="content-section">
-            <h2>Profile Information</h2>
-            <div class="profile-header" id="profile-header">
-                <div class="profile-header__content">
-                    <img src="@user.AvatarUrl" alt="Profile Picture" class="profile-img" id="profile-avatar"/>
-                    <input type="file" id="avatar-upload" style="display: none;" accept="image/*"/>
-                    <div class="profile-info">
-                        <p>
-                            <span id="fullname-text">@user.FullName</span>
-                            <input type="text" id="fullname-input" class="editable-field" value="@user.FullName"
-                                   style="display: none;">
-                        </p>
-                        <p>
-                            <span id="username-text">@user.Username</span>
-                            <input type="text" id="username-input" class="editable-field" value="@user.Username"
-                                   style="display: none;">
-                        </p>
+            <div class="profile-info-container">
+                <h2 class="cart-info__heading">My Wallet</h2>
+
+                <div class="wallet-content">
+                    <img class="card-img" src="assets/img/card1.png" alt="">
+                    <img class="card-img" src="assets/img/card2.png" alt="">
+
+                    <div class="new-card">
+                        <img src="./assets/icons/plus.svg" alt="" class="new-card__icon icon">
+                        <p class="new-card__text">Add New Card</p>
                     </div>
                 </div>
-                <button class="edit-button" onclick="triggerFileInput()">Edit Avatar</button>
             </div>
-
+            <div class="profile-info-container">
+                <h2 class="cart-info__heading">Profile Information</h2>
+                <div class="profile-header" id="profile-header">
+                    <div class="profile-header__content">
+                        <img src="@user.AvatarUrl" alt="Profile Picture" class="profile-img" id="profile-avatar"/>
+                        <input type="file" id="avatar-upload" style="display: none;" accept="image/*"/>
+                        <div class="profile-info">
+                            <p>
+                                <span id="fullname-text">@user.FullName</span>
+                                <input type="text" id="fullname-input" class="editable-field" value="@user.FullName"
+                                       style="display: none;">
+                            </p>
+                            <p>
+                                <span id="username-text">@user.Username</span>
+                                <input type="text" id="username-input" class="editable-field" value="@user.Username"
+                                       style="display: none;">
+                            </p>
+                        </div>
+                    </div>
+                    <button class="edit-button" onclick="triggerFileInput()">Edit Avatar</button>
+                </div>
+            </div>
 
             <!-- Personal Information Section -->
             <div class="section" id="personal-info-section">
@@ -135,11 +149,11 @@
                     <tr>
                         <td>ORD12345</td>
                         <td>February 10, 2023</td>
-                        <td>$45.99</td>
+                        <td>@string.Format("{0:N0}đ", 200000)</td>
                         <td>
-                        <span class="status status--shipped">
-                            Shipped
-                        </span>
+                            <span class="status status--shipped">
+                                Shipped
+                            </span>
                         </td>
                         <td><a href="/Order/Details/ORD12345" class="btn btn--primary btn--rounded">View Details</a>
                         </td>
@@ -147,11 +161,11 @@
                     <tr>
                         <td>ORD67890</td>
                         <td>March 15, 2023</td>
-                        <td>$99.50</td>
+                        <td>@string.Format("{0:N0}đ", 200000)</td>
                         <td>
-                        <span class="status status--delivered">
-                            Delivered
-                        </span>
+                            <span class="status status--delivered">
+                                Delivered
+                            </span>
                         </td>
                         <td><a href="/Order/Details/ORD67890" class="btn btn--primary btn--rounded">View Details</a>
                         </td>
@@ -159,11 +173,11 @@
                     <tr>
                         <td>ORD11223</td>
                         <td>April 25, 2023</td>
-                        <td>$75.00</td>
+                        <td>@string.Format("{0:N0}đ", 200000)</td>
                         <td>
-                        <span class="status status--pending">
-                            Pending
-                        </span>
+                            <span class="status status--pending">
+                                Pending
+                            </span>
                         </td>
                         <td><a href="/Order/Details/ORD11223" class="btn btn--primary btn--rounded">View Details</a>
                         </td>
@@ -182,7 +196,7 @@
                         <img src="@product.Img_url" alt="@product.Name" class="favourite-item__thumb">
                         <div class="favourite-item__details">
                             <h3 class="favourite-item__title">@product.Name</h3>
-                            <p class="favourite-item__price">$@product.Price</p>
+                            <p class="favourite-item__price">@string.Format("{0:N0}đ", @product.Price)</p>
                             <div class="favourite-item__actions">
                                 <button class="btn btn--primary btn--rounded">Add to Cart</button>
                                 @* <button class="btn btn--secondary btn--rounded"> *@
