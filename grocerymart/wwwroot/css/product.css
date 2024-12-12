@@ -6,14 +6,6 @@
     display: flex;
 }
 
-.row__left {
-    width: 35%;
-}
-
-.row__right {
-    width: 65%;
-}
-
 .prod-info-content {
     border-radius: 20px;
     background: #fff;
@@ -38,39 +30,11 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-}
-
-.prod-preview__thumbs {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    padding: 30px;
-}
-
-.prod-preview__thumb-img {
-    width: 65px;
-    height: 65px;
-    object-fit: contain;
-    border: 1px solid rgba(158, 157, 168, 0.3);
-    border-radius: 8px;
-    opacity: 0.9;
-    transition: opacity 0.3s, border-color 0.3s;
-}
-
-.prod-preview__thumb-img:not(.prod-preview__thumb-img--current):hover {
-    opacity: 1;
-    border-color: #9e9da8;
-    cursor: pointer;
-}
-
-.prod-preview__thumb-img--current {
-    opacity: 1;
-    border-color: #ffb700;
+    padding-top: 50px;
 }
 
 .prod-info {
-    padding: 60px 60px;
+    padding: 60px 60px 0;
     border-radius: 10px;
     background: #ffffff;
 }
@@ -78,8 +42,15 @@
 .prod-info__heading {
     margin: 0;
     font-size: 2.6rem;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 138.462%;
+}
+
+.prod-info__desc {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 12px;
 }
 
 .prod-info__label {
@@ -95,6 +66,7 @@
 }
 
 .prod-info__card {
+    width: 60%;
     margin-top: 30px;
     padding: 20px;
     border-radius: 6px;
@@ -145,10 +117,6 @@
     align-items: center;
     justify-content: center;
     cursor: pointer;
-}
-
-.prod-props {
-    padding-left: 30px;
 }
 
 .prod-prop {
@@ -222,7 +190,7 @@
 }
 
 .form {
-    width: 65%;
+    width: 55%;
 }
 
 .form__select-wrap {
@@ -299,5 +267,20 @@
 }
 
 .row-info {
-    padding: 0 60px 30px 60px;
+    margin-top: 30px;
+    padding: 0 120px 30px 120px;
+}
+
+.description-header {
+    margin: 0;
+    font-size: 2.2rem;
+    font-weight: 600;
+    line-height: 145.455%;
+}
+
+.description-content {
+    margin-top: 8px;
+    font-size: 1.6rem;
+    line-height: 150%;
+    text-align: justify;
 }

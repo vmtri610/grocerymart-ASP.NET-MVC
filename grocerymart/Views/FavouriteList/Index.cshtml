@@ -9,7 +9,7 @@
             <p class="cart-info__desc">@Model.ProductLiked.Count items</p>
             <div class="cart-info__check-all">
                 <label class="cart-info__checkbox">
-                    <input type="checkbox" name="shipping-adress" class="cart-info__checkbox-input">
+                    <input type="checkbox" name="shipping-adress" class="cart-info__checkbox-input checked">
                 </label>
             </div>
             <div class="cart-info__list">
@@ -28,7 +28,7 @@
                                     @product.Name
                                 </h3>
                                 <p class="cart-item__price-wrap">
-                                    @string.Format("{0:C}", product.Price) | <span
+                                    @string.Format("{0:N0}đ", product.Price) | <span
                                         class="cart-item__status">In Stock</span>
                                 </p>
                                 <div class="cart-item__ctrl">
@@ -59,7 +59,8 @@
                                 </div>
                             </div>
                             <div class="cart-item__content-right">
-                                <p class="cart-item__total-price">@string.Format("{0:C}", product.Price)</p>
+                                <p class="cart-item__total-price">@string.Format("{0:N0}đ"
+                                                                      , product.Price)</p>
                                 <button class="cart-item__checkout-btn btn btn--primary btn--rounded">
                                     Check Out
                                 </button>
@@ -119,7 +120,7 @@
             cartItem.classList.add('cart-item');
             cartItem.innerHTML = `
                 <label class="cart-info__checkbox">
-                    <input type="checkbox" name="shipping-adress" class="cart-info__checkbox-input" checked="">
+                    <input type="checkbox" name="shipping-adress" class="cart-info__checkbox-input" checked>
                 </label>
                     <a href="/Product/Index/${product.id}" class="cart-item__link">
 
@@ -147,10 +148,7 @@
                         </div>
                     </div>
                     <div class="cart-item__content-right">
-                        <p class="cart-item__total-price">${new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD'
-            }).format(product.price)}</p>
+                        <p class="cart-item__total-price">${new Intl.NumberFormat('vi-VN').format(product.price) + 'đ'}</p>
                         <button class="cart-item__checkout-btn btn btn--primary btn--rounded">
                             Check Out
                         </button>
