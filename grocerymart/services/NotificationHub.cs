@@ -13,4 +13,14 @@ public class NotificationHub : Hub
     {
         await Clients.All.SendAsync("ReceiveCartProducts", count);
     }
+
+    public async Task NotifyLikedProductsChanged()
+    {
+        await Clients.All.SendAsync("LikedProductsChanged");
+    }
+
+    public async Task NotifyCartProductsChanged()
+    {
+        await Clients.All.SendAsync("CartProductsChanged");
+    }
 }

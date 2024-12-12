@@ -67,6 +67,16 @@ public class HomeController : Controller
 
             HttpContext.Session.SetString("CartItems", JsonConvert.SerializeObject(cartViewModel.ProducsInCart));
 
+            var productsLiked = await _supabaseClient.Rpc<List<ProductResponseModel>>("get_product_in_liked",
+                new Dictionary<string, object> { { "p_id", userId } });
+
+            var viewModelLiked = new ProductViewModel
+            {
+                ProductLiked = productsLiked
+            };
+
+            HttpContext.Session.SetString("LikedItems", JsonConvert.SerializeObject(viewModelLiked.ProductLiked));
+
 
             return View(viewModel);
         }
@@ -95,6 +105,18 @@ public class HomeController : Controller
 
             await _hubContext.Clients.All.SendAsync("ReceiveLikedProducts", countLikedProducts);
 
+            var productsLiked = await _supabaseClient.Rpc<List<ProductResponseModel>>("get_product_in_liked",
+                new Dictionary<string, object> { { "p_id", userId } });
+
+            var viewModelLiked = new ProductViewModel
+            {
+                ProductLiked = productsLiked
+            };
+
+            HttpContext.Session.SetString("LikedItems", JsonConvert.SerializeObject(viewModelLiked.ProductLiked));
+
+            await _hubContext.Clients.All.SendAsync("LikedProductsChanged", viewModelLiked.ProductLiked);
+
             var products = await _supabaseClient.From<ProductModel>().Select("*")
                 .Order("created_at", Constants.Ordering.Ascending).Get();
             var viewModel = new ProductViewModel { Products = products.Models };
@@ -107,7 +129,7 @@ public class HomeController : Controller
             return Json(new { success = false, error = e.Message });
         }
     }
-    
+
     // Logout
     public async Task<IActionResult> Logout()
     {

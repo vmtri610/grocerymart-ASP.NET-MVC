@@ -1,4 +1,21 @@
-﻿<link rel="stylesheet" href="~/css/profile.css"/>
+﻿@using Newtonsoft.Json
+@{
+    var userJson = Context.Session.GetString("User");
+    var user = new ProfileModel();
+    if (!string.IsNullOrEmpty(userJson))
+    {
+        user = JsonConvert.DeserializeObject<ProfileModel>(userJson);
+    }
+
+    var listLikedProducts = Context.Session.GetString("LikedItems");
+    var likedProducts = new List<ProductResponseModel>();
+    if (!string.IsNullOrEmpty(listLikedProducts))
+    {
+        likedProducts = JsonConvert.DeserializeObject<List<ProductResponseModel>>(listLikedProducts);
+    }
+}
+
+<link rel="stylesheet" href="~/css/profile.css"/>
 
 <div class="profile-container">
     <div class="sidebar">
@@ -9,7 +26,7 @@
                 <li><a href="#" id="history-link" onclick="showContent('history')">Order History</a></li>
                 <li><a href="#" id="favourites-link" onclick="showContent('favourites')">Favourites</a></li>
                 <li><a href="#" id="addresses-link" onclick="showContent('addresses')">Addresses</a></li>
-                <li><a href="#" id="logout-link" onclick="logout()">Logout</a></li>
+                <li><a asp-controller="Home" asp-action="Logout" id="logout-link" onclick="logout()">Logout</a></li>
             </ul>
         </nav>
     </div>
@@ -19,18 +36,17 @@
             <h2>Profile Information</h2>
             <div class="profile-header" id="profile-header">
                 <div class="profile-header__content">
-                    <img src="assets/img/avatar.jpg" alt="Profile Picture" class="profile-img" id="profile-avatar"/>
-                    <input type="file" id="avatar-upload" style="display: none;" accept="image/*"
-                           onchange="updateAvatar(event)"/>
+                    <img src="@user.AvatarUrl" alt="Profile Picture" class="profile-img" id="profile-avatar"/>
+                    <input type="file" id="avatar-upload" style="display: none;" accept="image/*"/>
                     <div class="profile-info">
                         <p>
-                            <span id="fullname-text">John Doe</span>
-                            <input type="text" id="fullname-input" class="editable-field" value="John Doe"
+                            <span id="fullname-text">@user.FullName</span>
+                            <input type="text" id="fullname-input" class="editable-field" value="@user.FullName"
                                    style="display: none;">
                         </p>
                         <p>
-                            <span id="username-text">@@johndoe</span>
-                            <input type="text" id="username-input" class="editable-field" value="@@johndoe"
+                            <span id="username-text">@user.Username</span>
+                            <input type="text" id="username-input" class="editable-field" value="@user.Username"
                                    style="display: none;">
                         </p>
                     </div>
@@ -46,26 +62,26 @@
                     <div class="info-grid">
                         <div class="info-item">
                             <label>Full Name</label>
-                            <span id="fullname-text">John Doe</span>
-                            <input type="text" id="fullname-input" class="editable-field" value="John Doe"
+                            <span id="fullname-text">@user.FullName</span>
+                            <input type="text" id="fullname-input" class="editable-field" value="@user.FullName"
                                    style="display: none;">
                         </div>
                         <div class="info-item">
                             <label>Username</label>
-                            <span id="username-text">@@johndoe</span>
-                            <input type="text" id="username-input" class="editable-field" value="@@johndoe"
+                            <span id="username-text">@user.Username</span>
+                            <input type="text" id="username-input" class="editable-field" value="@user.Username"
                                    style="display: none;">
                         </div>
                         <div class="info-item">
                             <label>Email Address</label>
-                            <span id="email-text">johndoe@gmail.com</span>
-                            <input type="email" id="email-input" class="editable-field" value="johndoe@gmail.com"
+                            <span id="email-text">@user.Email</span>
+                            <input type="email" id="email-input" class="editable-field" value="@user.Email"
                                    style="display: none;">
                         </div>
                         <div class="info-item">
                             <label>Phone</label>
-                            <span id="phone-text">+09 345 346 46</span>
-                            <input type="text" id="phone-input" class="editable-field" value="+09 345 346 46"
+                            <span id="phone-text">@FormatPhoneNumber(user.PhoneNumber)</span>
+                            <input type="text" id="phone-input" class="editable-field" value="@user.PhoneNumber"
                                    style="display: none;">
                         </div>
                     </div>
@@ -160,59 +176,25 @@
         <div id="favourites" class="content-section" style="display:none;">
             <h2>Favourites</h2>
             <div class="favourites-list">
-                <!-- Favourite Item 1 -->
-                <div class="favourite-item">
-                    <img src="~/assets/img/product1.png" alt="Product A" class="favourite-item__thumb">
-                    <div class="favourite-item__details">
-                        <h3 class="favourite-item__title">Product A</h3>
-                        <p class="favourite-item__price">$25.99</p>
-                        <div class="favourite-item__actions">
-                            <button class="btn btn--primary btn--rounded">Add to Cart</button>
-                            <button class="btn btn--secondary btn--rounded">
-                                <img src="~/assets/icons/heart-2.svg" alt="Save" class="icon"> Save
-                            </button>
-                            <button class="btn btn--danger btn--rounded">
-                                <img src="~/assets/icons/trash.svg" alt="Delete" class="icon"> Remove
-                            </button>
+                @foreach (var product in likedProducts)
+                {
+                    <div class="favourite-item">
+                        <img src="@product.Img_url" alt="@product.Name" class="favourite-item__thumb">
+                        <div class="favourite-item__details">
+                            <h3 class="favourite-item__title">@product.Name</h3>
+                            <p class="favourite-item__price">$@product.Price</p>
+                            <div class="favourite-item__actions">
+                                <button class="btn btn--primary btn--rounded">Add to Cart</button>
+                                @* <button class="btn btn--secondary btn--rounded"> *@
+                                @*     <img src="~/assets/icons/heart-2.svg" alt="Save" class="icon"> Save *@
+                                @* </button> *@
+                                <button class="btn btn--danger btn--rounded">
+                                    <img src="~/assets/icons/trash.svg" alt="Delete" class="icon"> Remove
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Favourite Item 2 -->
-                <div class="favourite-item">
-                    <img src="~/assets/img/product2.png" alt="Product B" class="favourite-item__thumb">
-                    <div class="favourite-item__details">
-                        <h3 class="favourite-item__title">Product B</h3>
-                        <p class="favourite-item__price">$45.00</p>
-                        <div class="favourite-item__actions">
-                            <button class="btn btn--primary btn--rounded">Add to Cart</button>
-                            <button class="btn btn--secondary btn--rounded">
-                                <img src="~/assets/icons/heart-2.svg" alt="Save" class="icon"> Save
-                            </button>
-                            <button class="btn btn--danger btn--rounded">
-                                <img src="~/assets/icons/trash.svg" alt="Delete" class="icon"> Remove
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Favourite Item 3 -->
-                <div class="favourite-item">
-                    <img src="~/assets/img/product3.png" alt="Product C" class="favourite-item__thumb">
-                    <div class="favourite-item__details">
-                        <h3 class="favourite-item__title">Product C</h3>
-                        <p class="favourite-item__price">$15.50</p>
-                        <div class="favourite-item__actions">
-                            <button class="btn btn--primary btn--rounded">Add to Cart</button>
-                            <button class="btn btn--secondary btn--rounded">
-                                <img src="~/assets/icons/heart-2.svg" alt="Save" class="icon"> Save
-                            </button>
-                            <button class="btn btn--danger btn--rounded">
-                                <img src="~/assets/icons/trash.svg" alt="Delete" class="icon"> Remove
-                            </button>
-                        </div>
-                    </div>
-                </div>
+                }
             </div>
         </div>
 
@@ -273,10 +255,6 @@
         const links = document.querySelectorAll('.nav-links a');
         links.forEach(link => link.classList.remove('active'));
         document.getElementById(section + '-link').classList.add('active');
-    }
-
-    function logout() {
-        alert('Logged out');
     }
 
     showContent('profile');
@@ -350,3 +328,18 @@
     }
 
 </script>
+
+@functions {
+
+    public string FormatPhoneNumber(string phoneNumber)
+    {
+        if (string.IsNullOrEmpty(phoneNumber))
+        {
+            return phoneNumber;
+        }
+
+        // Example: Format phone number as (XXX) XXX-XXXX
+        return string.Format("{0:(###) ###-####}", long.Parse(phoneNumber.Replace(" ", "").Replace("+", "").Replace("-", "")));
+    }
+
+}

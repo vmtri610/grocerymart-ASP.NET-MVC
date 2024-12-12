@@ -30,6 +30,21 @@
                             <img src="~/assets/icons/fullname.svg" alt="">
                         </div>
                     </div>
+                    <!-- Username Field -->
+                    <div class="form__group">
+                        <div class="form__text">
+                            <input type="text" name="username" placeholder="User Name" autocomplete="off" required>
+                            <img src="~/assets/icons/fullname.svg" alt="">
+                        </div>
+                    </div>
+                    <!-- Phone Number Field -->
+                    <div class="form__group">
+                        <div class="form__text phone">
+                            <input type="tel" name="phoneNumber" placeholder="Phone Number" autocomplete="off" required>
+                            <img src="~/assets/icons/fullname.svg" alt="">
+                        </div>
+                    </div>
+
                     <!-- Email Field -->
                     <div class="form__group">
                         <div class="form__text">
@@ -68,10 +83,57 @@
 <script>
     document.getElementById('signUpForm').addEventListener('submit', function (event) {
         var fullName = document.querySelector('[name="fullName"]');
+        var username = document.querySelector('[name="username"]');
+        var phoneNumber = document.querySelector('[name="phoneNumber"]');
         var email = document.querySelector('[name="email"]');
         var password = document.querySelector('[name="password"]');
         var confirmPassword = document.querySelector('[name="confirmPassword"]');
         var isValid = true;
+
+        // Full Name Validation
+        var fullNameRegex = /^[a-zA-Z\s]+$/;
+        if (!fullName.value) {
+            document.getElementById('fullNameError').textContent = "Full Name is required.";
+            fullName.closest('.form__text').classList.add('error');
+            isValid = false;
+        } else if (!fullNameRegex.test(fullName.value)) {
+            document.getElementById('fullNameError').textContent = "Please enter a valid full name.";
+            fullName.closest('.form__text').classList.add('error');
+            isValid = false;
+        } else {
+            document.getElementById('fullNameError').textContent = "";
+            fullName.closest('.form__text').classList.remove('error');
+        }
+
+        // Username Validation
+        var usernameRegex = /^[a-zA-Z0-9]+$/;
+        if (!username.value) {
+            document.getElementById('usernameError').textContent = "Username is required.";
+            username.closest('.form__text').classList.add('error');
+            isValid = false;
+        } else if (!usernameRegex.test(username.value)) {
+            document.getElementById('usernameError').textContent = "Please enter a valid username.";
+            username.closest('.form__text').classList.add('error');
+            isValid = false;
+        } else {
+            document.getElementById('usernameError').textContent = "";
+            username.closest('.form__text').classList.remove('error');
+        }
+
+        // Phone Number Validation
+        var phoneNumberRegex = /^\d{10}$/;
+        if (!phoneNumber.value) {
+            document.getElementById('phoneNumberError').textContent = "Phone Number is required.";
+            phoneNumber.closest('.form__text').classList.add('error');
+            isValid = false;
+        } else if (!phoneNumberRegex.test(phoneNumber.value)) {
+            document.getElementById('phoneNumberError').textContent = "Please enter a valid phone number.";
+            phoneNumber.closest('.form__text').classList.add('error');
+            isValid = false;
+        } else {
+            document.getElementById('phoneNumberError').textContent = "";
+            phoneNumber.closest('.form__text').classList.remove('error');
+        }
 
         // Email Validation (regex for valid email format)
         var emailRegex = /\S+@@\S+\.\S+/;

@@ -7,5 +7,6 @@ public class CartItemResponseModel
     public string Name { get; set; }
     public long Price { get; set; }
     public long Quantity { get; set; }
+    public string Type { get; set; }
     public string Img { get; set; }
 }

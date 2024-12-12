@@ -19,7 +19,8 @@ public class SignUpController : Controller
         return View();
     }
 
-    public async Task<IActionResult> SignUp(string email, string password, string fullName)
+    public async Task<IActionResult> SignUp(string email, string password, string fullName, string phoneNumber,
+        string username)
     {
         var session = await _supabaseClient.Auth.SignUp(email, password);
 
@@ -30,6 +31,8 @@ public class SignUpController : Controller
                 .From<ProfileModel>()
                 .Where(x => x.Id == session.User.Id)
                 .Set(x => x.FullName, fullName)
+                .Set(x => x.PhoneNumber, phoneNumber)
+                .Set(x => x.Username, username)
                 .Update();
         }
 

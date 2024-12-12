@@ -13,6 +13,10 @@ public class ProfileModel : BaseModel
 
     [Column("full_name")] public string FullName { get; set; }
 
+    [Column("phone_number")] public string PhoneNumber { get; set; }
+
+    [Column("username")] public string Username { get; set; }
+
     [Column("email")] public string Email { get; set; }
 
     [Column("avatar_url")] public string AvatarUrl { get; set; }
