@@ -117,6 +117,7 @@ public class HomeController : Controller
 
             await _hubContext.Clients.All.SendAsync("LikedProductsChanged", viewModelLiked.ProductLiked);
 
+
             var products = await _supabaseClient.From<ProductModel>().Select("*")
                 .Order("created_at", Constants.Ordering.Ascending).Get();
             var viewModel = new ProductViewModel { Products = products.Models };

@@ -74,7 +74,14 @@
     const heartIcon = '@Url.Content("~/assets/icons/heart.svg")';
 
     document.querySelectorAll('.product__like').forEach(button => {
+
         button.addEventListener('click', async (event) => {
+            const user = @Html.Raw(JsonConvert.SerializeObject(user));
+            if (user === null) {
+                // Redirect to the login page
+                window.location.href = '/Login';
+                return;
+            }
             const productId = button.getAttribute('data-product-id');
             const response = await fetch(`/Home/LikedProducts?product_id=${productId}`, {
                 method: 'POST',
@@ -100,6 +107,7 @@
             }
         });
     });
+
 </script>
 
 
