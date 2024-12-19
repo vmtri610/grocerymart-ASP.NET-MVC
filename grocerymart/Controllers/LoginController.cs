@@ -37,7 +37,7 @@ public class LoginController : Controller
         catch (Exception ex)
         {
             // Handle exceptions (e.g., network issues, service unavailability, etc.)
-            TempData["LoginError"] = "An error occurred while logging in. Please try again later.";
+            TempData["LoginError"] = "Invalid email or password. Please try again.";
             return RedirectToAction("Index");
         }
     }
