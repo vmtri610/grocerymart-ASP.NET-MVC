@@ -9,12 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b8f66a49-29fe-4c25-a330-b04f88b30cce" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/grocerymart/Views/Product/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Product/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Views/Profile/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Profile/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/product.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/product.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/profile.css" afterDir="false" />
-    </list>
+    <list default="true" id="b8f66a49-29fe-4c25-a330-b04f88b30cce" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -159,6 +154,7 @@
       <workItem from="1733909528229" duration="3529000" />
       <workItem from="1733926423483" duration="6694000" />
       <workItem from="1733934806672" duration="1384000" />
+      <workItem from="1733990349641" duration="14183000" />
     </task>
     <servers />
   </component>
