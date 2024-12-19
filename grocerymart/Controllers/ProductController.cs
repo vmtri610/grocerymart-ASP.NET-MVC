@@ -59,21 +59,19 @@ public class ProductController : Controller
             var countLikedProducts = int.Parse(countLikedProductsResponse.Content);
             HttpContext.Session.SetInt32("LikedProducts", countLikedProducts);
 
-
-            _logger.LogInformation("Sending SignalR event: ReceiveLikedProducts with count = {countLikedProducts}",
-                countLikedProducts);
             await _hubContext.Clients.All.SendAsync("ReceiveLikedProducts", countLikedProducts);
-            _logger.LogInformation("SignalR event sent successfully.");
 
-            var result = await _supabaseClient.Rpc<List<CartItemResponseModel>>("get_products_in_cart",
+            var productsLiked = await _supabaseClient.Rpc<List<ProductResponseModel>>("get_product_in_liked",
                 new Dictionary<string, object> { { "p_id", userId } });
 
-            var cartViewModel = new CartViewModel
+            var viewModelLiked = new ProductViewModel
             {
-                ProducsInCart = result
+                ProductLiked = productsLiked
             };
 
-            HttpContext.Session.SetString("CartItems", JsonConvert.SerializeObject(cartViewModel.ProducsInCart));
+            HttpContext.Session.SetString("LikedItems", JsonConvert.SerializeObject(viewModelLiked.ProductLiked));
+
+            await _hubContext.Clients.All.SendAsync("LikedProductsChanged", viewModelLiked.ProductLiked);
 
             return Json(new { success = true });
         }
@@ -88,8 +86,8 @@ public class ProductController : Controller
     {
         try
         {
-            Console.WriteLine("Add to cart: " + id);
             var userId = HttpContext.Session.GetString("UserId");
+
             await _supabaseClient.Rpc("add_product_to_cart",
                 new Dictionary<string, object> { { "p_pro_id", id }, { "p_id", userId }, { "p_quantity", 1 } });
 
@@ -110,6 +108,7 @@ public class ProductController : Controller
             };
 
             HttpContext.Session.SetString("CartItems", JsonConvert.SerializeObject(cartViewModel.ProducsInCart));
+            await _hubContext.Clients.All.SendAsync("CartProductsChanged", cartViewModel.ProducsInCart);
 
             return Json(new { success = true });
         }

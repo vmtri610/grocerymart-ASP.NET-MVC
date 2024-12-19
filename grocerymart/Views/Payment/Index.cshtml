@@ -1,4 +1,8 @@
-﻿<link rel="stylesheet" href="~/css/checkout.css"/>
+﻿@model grocerymart.ViewModel.CartViewModel
+@{
+    var subtotal = Model.ProducsInCart.Sum(product => product.Price * product.Quantity);
+}
+<link rel="stylesheet" href="~/css/checkout.css"/>
 
 <div class="container">
     <div class="checkout-container">
@@ -7,12 +11,13 @@
                 <div class="cart-info">
                     <div class="cart-info__top">
                         <h2 class="cart-info__heading cart-info__heading--lv2">
-                            1. Shipping, arrives between Mon, May 16—Tue, May 24
+                            1. Shipping, arrives
+                            between @DateTime.Now.ToString("ddd, MMM dd") — @DateTime.Now.AddDays(7).ToString("ddd, MMM dd")
                         </h2>
-                        <a class="cart-info__edit-btn" href="~/shipping">
-                            <img class="icon" src="~/assets/icons/edit.svg" alt="">
-                            Edit
-                        </a>
+                        @* <a class="cart-info__edit-btn" href="~/shipping"> *@
+                        @*     <img class="icon" src="~/assets/icons/edit.svg" alt=""> *@
+                        @*     Edit *@
+                        @* </a> *@
                     </div>
 
                     <!-- Payment item 1 -->
@@ -27,7 +32,7 @@
                     <article class="payment-item">
                         <div class="payment-item__info">
                             <h3 class="payment-item__title">Items details</h3>
-                            <p class="payment-item__desc">2 items</p>
+                            <p class="payment-item__desc">@subtotal items</p>
                         </div>
                         <a href="~/shipping" class="payment-item__detail">View details</a>
                     </article>
@@ -145,7 +150,7 @@
                     </div>
                     <div class="cart-info__row">
                         <span>Price <span class="cart-info__sub-label">(Total)</span></span>
-                        <span>@string.Format("{0:N0}đ", 120000)</span>
+                        <span>@string.Format("{0:N0}đ", subtotal)</span>
                     </div>
                     <div class="cart-info__row">
                         <span>Shipping</span>
@@ -154,9 +159,10 @@
                     <div class="cart-info__separate"></div>
                     <div class="cart-info__row">
                         <span>Estimated Total</span>
-                        <span>@string.Format("{0:N0}đ", 200000)</span>
+                        <span>@string.Format("{0:N0}đ", subtotal + 30000)</span>
                     </div>
-                    <a href="#!" class="cart-info__next-btn btn btn--primary btn--rounded">Pay @string.Format("{0:N0}đ", 200000)</a>
+                    <a href="#!"
+                       class="cart-info__next-btn btn btn--primary btn--rounded">Pay @string.Format("{0:N0}đ", subtotal + 30000)</a>
                 </div>
                 <div class="cart-info">
                     <a href="#!">

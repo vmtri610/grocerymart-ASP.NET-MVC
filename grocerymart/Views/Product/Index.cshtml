@@ -157,6 +157,12 @@
 
     document.querySelectorAll('.prod-info__like-btn').forEach(button => {
         button.addEventListener('click', async (event) => {
+            const user = @Html.Raw(JsonConvert.SerializeObject(user));
+            if (user === null) {
+                // Redirect to the login page
+                window.location.href = '/Login';
+                return;
+            }
             const productId = button.getAttribute('data-product-id');
             const response = await fetch(`/Product/Like?id=${productId}`, {
                 method: 'POST',
@@ -184,7 +190,12 @@
     });
 
     document.querySelector('.prod-info__add-to-cart').addEventListener('click', async (event) => {
-        console.log('Add to cart clicked');
+        const user = @Html.Raw(JsonConvert.SerializeObject(user));
+        if (user === null) {
+            // Redirect to the login page
+            window.location.href = '/Login';
+            return;
+        }
         const productId = '@Model.Id'; // Define productId here
         const response = await fetch(`/Product/AddToCart?id=${productId}`, {
             method: 'POST',

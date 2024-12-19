@@ -92,7 +92,7 @@
                                 <div class="cart-info__separate"></div>
                                 <div class="cart-info__row cart-info__row--bold">
                                     <span>Total:</span>
-                                    <span>@string.Format("{0:N0}đ", subtotal + 10)</span>
+                                    <span>@string.Format("{0:N0}đ", subtotal + 30000)</span>
                                 </div>
                             </div>
                         </div>
@@ -118,7 +118,8 @@
                         <span>Estimated Total</span>
                         <span>@string.Format("{0:N0}đ", subtotal + 30000)</span>
                     </div>
-                    <a href="./shipping" class="cart-info__next-btn btn btn--primary btn--rounded">
+                    <a asp-action="Index" asp-controller="Shipping"
+                       class="cart-info__next-btn btn btn--primary btn--rounded">
                         Continue to checkout
                     </a>
                 </div>
