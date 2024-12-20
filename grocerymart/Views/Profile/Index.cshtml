@@ -22,10 +22,10 @@
         <h2>Settings</h2>
         <nav class="nav-links">
             <ul>
-                <li><a href="#" id="profile-link" class="active" onclick="showContent('profile')">Profile</a></li>
-                <li><a href="#" id="history-link" onclick="showContent('history')">Order History</a></li>
-                <li><a href="#" id="favourites-link" onclick="showContent('favourites')">Favourites</a></li>
-                <li><a href="#" id="addresses-link" onclick="showContent('addresses')">Addresses</a></li>
+                <li><a id="profile-link" class="active" onclick="showContent('profile')">Profile</a></li>
+                <li><a id="history-link" onclick="showContent('history')">Order History</a></li>
+                <li><a id="favourites-link" onclick="showContent('favourites')">Favourites</a></li>
+                <li><a id="addresses-link" onclick="showContent('addresses')">Addresses</a></li>
                 <li><a asp-controller="Home" asp-action="Logout" id="logout-link" onclick="logout()">Logout</a></li>
             </ul>
         </nav>
@@ -206,7 +206,8 @@
                                 @* <button class="btn btn--secondary btn--rounded"> *@
                                 @*     <img src="~/assets/icons/heart-2.svg" alt="Save" class="icon"> Save *@
                                 @* </button> *@
-                                <button class="btn btn--danger btn--rounded">
+                                <button class="btn btn--danger btn--rounded remove-product"
+                                        data-product-id="@product.Id">
                                     <img src="~/assets/icons/trash.svg" alt="Delete" class="icon"> Remove
                                 </button>
                             </div>
@@ -263,6 +264,7 @@
     </div>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.0/signalr.min.js"></script>
 <script>
     function showContent(section) {
         const sections = document.querySelectorAll('.content-section');
@@ -342,6 +344,47 @@
             reader.readAsDataURL(file);
         }
     }
+
+    // remove liked product
+    document.querySelectorAll('.remove-product').forEach(button => {
+        button.addEventListener('click', async (event) => {
+            const productId = button.getAttribute('data-product-id');
+            const response = await fetch(`/Profile/RemoveFromFavourite?product_id=${productId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+        });
+    });
+
+    connection.on("LikedProductsChanged", (products) => {
+        // Locate the container to update
+        const favouritesList = document.querySelector('.favourites-list');
+        favouritesList.innerHTML = '';
+
+        // Update the list of liked products
+        products.forEach(product => {
+            const favouriteItem = document.createElement('div');
+            favouriteItem.classList.add('favourite-item');
+
+            favouriteItem.innerHTML = `
+                <img src="${product.img_url}" alt="${product.name}" class="favourite-item__thumb">
+                <div class="favourite-item__details">
+                    <h3 class="favourite-item__title">${product.name}</h3>
+                    <p class="favourite-item__price">${product.price}</p>
+                    <div class="favourite-item__actions">
+                        <button class="btn btn--primary btn--rounded">Add to Cart</button>
+                        <button class="btn btn--danger btn--rounded remove-product" data-product-id="${product.id}">
+                            <img src="./assets/icons/trash.svg" alt="Delete" class="icon"> Remove
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            favouritesList.appendChild(favouriteItem);
+        });
+    });
 
 </script>
 

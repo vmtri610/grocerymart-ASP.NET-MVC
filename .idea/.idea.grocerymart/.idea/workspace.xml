@@ -11,10 +11,8 @@
   <component name="ChangeListManager">
     <list default="true" id="b8f66a49-29fe-4c25-a330-b04f88b30cce" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.grocerymart/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.grocerymart/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Controllers/LoginController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Controllers/LoginController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grocerymart/Controllers/ProfileController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Controllers/ProfileController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grocerymart/Views/Profile/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Profile/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/profile.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -164,6 +162,7 @@
       <workItem from="1734161524348" duration="6000" />
       <workItem from="1734264116369" duration="3864000" />
       <workItem from="1734272871932" duration="30000" />
+      <workItem from="1734597130812" duration="4148000" />
     </task>
     <servers />
   </component>
