@@ -530,9 +530,6 @@ h2 {
     cursor: pointer;
     transition: background-color 0.3s ease;
     margin-top: 15px;
-}
-
-.save-button {
     background-color: #28a745;
     color: white;
 }
@@ -770,8 +767,7 @@ form {
     font-size: 14px;
 }
 
-.form-group input,
-.form-group textarea {
+.form-group input {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
@@ -786,6 +782,6 @@ form {
     margin-top: 15px;
 }
 
-textarea {
-    resize: none;
+.save-address {
+    width: 100% !important;
 }

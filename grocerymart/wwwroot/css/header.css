@@ -159,6 +159,10 @@
     line-height: 145.455%;
 }
 
+.act-dropdown__view-all:hover {
+    text-decoration: underline;
+}
+
 .act-dropdown__list-product {
     display: flex;
     padding-bottom: 10px;
@@ -222,7 +226,6 @@
 
 .act-dropdown__bottom {
     margin: 20px 0;
-    padding: 20px 0;
 }
 
 .act-dropdown__row {
@@ -306,4 +309,8 @@
     margin-top: 10px;
     padding-top: 10px;
     border-top: 1px solid #d2d1d6;
+}
+
+.btn--primary:hover {
+    background-color: #ffa500;
 }

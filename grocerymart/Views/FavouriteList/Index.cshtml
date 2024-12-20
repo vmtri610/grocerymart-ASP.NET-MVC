@@ -11,9 +11,6 @@
                 @foreach (var product in Model.ProductLiked)
                 {
                     <div class="cart-item">
-                        <label class="cart-info__checkbox">
-                            <input type="checkbox" name="shipping-adress" class="cart-info__checkbox-input" checked="">
-                        </label>
                         <a href="@Url.Action("Index", "Product", new { id = product.Id })">
                             <img src="@Url.Content(product.Img_url)" alt="" class="cart-item__thumb"/>
                         </a>
