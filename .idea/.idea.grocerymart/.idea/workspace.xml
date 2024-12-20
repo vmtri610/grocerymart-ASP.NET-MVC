@@ -12,9 +12,9 @@
     <list default="true" id="b8f66a49-29fe-4c25-a330-b04f88b30cce" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.grocerymart/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.grocerymart/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grocerymart/Views/FavouriteList/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/FavouriteList/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Views/Login/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Login/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grocerymart/Views/Profile/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Profile/Index.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/grocerymart/Views/Shared/_Header.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Shared/_Header.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/checkout.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/checkout.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/footer.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/header.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/profile.css" afterDir="false" />
     </list>
@@ -38,7 +38,6 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="mock://D:/Hhaozzzzzz/HSU/3rd_year/PTW/project/grocerymart-ASP.NET-MVC/grocerymart/Views/Profile/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/Hhaozzzzzz/HSU/3rd_year/PTW/project/grocerymart-ASP.NET-MVC/grocerymart/Views/Profile/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/Hhaozzzzzz/HSU/3rd_year/PTW/project/grocerymart-ASP.NET-MVC/grocerymart/Views/Profile/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
     <setting file="mock://D:/Hhaozzzzzz/HSU/3rd_year/PTW/project/grocerymart-ASP.NET-MVC/grocerymart/Views/Profile/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
@@ -168,6 +167,8 @@
       <workItem from="1734272871932" duration="30000" />
       <workItem from="1734632964823" duration="1959000" />
       <workItem from="1734666307075" duration="1090000" />
+      <workItem from="1734676837223" duration="94000" />
+      <workItem from="1734688590965" duration="7964000" />
     </task>
     <servers />
   </component>

@@ -311,7 +311,7 @@
                 </div>
                 <div class="form-group">
                     <label for="address-line">Address</label>
-                    <textarea id="address-line" name="addressLine" placeholder="Enter full address" required></textarea>
+                    <input id="address-line" name="addressLine" placeholder="Enter full address" required></input>
                 </div>
                 <div class="form-group">
                     <label for="city">City</label>
@@ -325,11 +325,10 @@
                     <label for="zip-code">ZIP Code</label>
                     <input type="text" id="zip-code" name="zipCode" placeholder="Enter ZIP code" required>
                 </div>
-                <button type="button" onclick="saveNewAddress()" class="btn">Save Address</button>
+                <button type="button" onclick="saveNewAddress()" class="save-button save-address">Save Address</button>
             </form>
         </div>
     </div>
-
 </div>
 
 <script>
@@ -415,6 +414,14 @@
     function showModal(modalId) {
         const modal = document.getElementById(modalId);
         modal.style.display = "block";
+
+        // Close the modal if clicked outside the content
+        window.addEventListener("click", function handleOutsideClick(event) {
+            if (event.target === modal) {
+                closeModal(modalId);
+                window.removeEventListener("click", handleOutsideClick); // Remove event listener after it's triggered
+            }
+        });
     }
 
     function closeModal(modalId) {

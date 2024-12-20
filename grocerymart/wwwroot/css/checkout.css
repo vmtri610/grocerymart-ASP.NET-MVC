@@ -71,6 +71,7 @@
 
 .cart-info__desc {
     margin-top: 6px;
+    margin-bottom: 12px;
     font-size: 1.5rem;
     line-height: 146.667%;
 }
@@ -494,8 +495,8 @@
     cursor: pointer;
 }
 
-.btn:focus {
-    box-shadow: none;
+.btn:hover {
+    background-color: #ffa500;
 }
 
 /*Form*/
