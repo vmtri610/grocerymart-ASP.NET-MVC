@@ -138,57 +138,96 @@
 
         <div id="history" class="content-section" style="display:none;">
             <h2>Order History</h2>
-            <div class="orders-table-wrapper">
-                <table class="orders-table">
-                    <thead>
-                    <tr>
-                        <th>Order ID</th>
-                        <th>Date</th>
-                        <th>Total</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>ORD12345</td>
-                        <td>February 10, 2023</td>
-                        <td>@string.Format("{0:N0}đ", 200000)</td>
-                        <td>
-                            <span class="status status--shipped">
-                                Shipped
-                            </span>
-                        </td>
-                        <td><a href="/Order/Details/ORD12345" class="btn btn--primary btn--rounded">View Details</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>ORD67890</td>
-                        <td>March 15, 2023</td>
-                        <td>@string.Format("{0:N0}đ", 200000)</td>
-                        <td>
-                            <span class="status status--delivered">
-                                Delivered
-                            </span>
-                        </td>
-                        <td><a href="/Order/Details/ORD67890" class="btn btn--primary btn--rounded">View Details</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>ORD11223</td>
-                        <td>April 25, 2023</td>
-                        <td>@string.Format("{0:N0}đ", 200000)</td>
-                        <td>
-                            <span class="status status--pending">
-                                Pending
-                            </span>
-                        </td>
-                        <td><a href="/Order/Details/ORD11223" class="btn btn--primary btn--rounded">View Details</a>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+            @* <div class="orders-table-wrapper"> *@
+            @*     <table class="orders-table"> *@
+            @*         <thead> *@
+            @*         <tr> *@
+            @*             <th>Order ID</th> *@
+            @*             <th>Date</th> *@
+            @*             <th>Total</th> *@
+            @*             <th>Status</th> *@
+            @*             <th>Action</th> *@
+            @*         </tr> *@
+            @*         </thead> *@
+            @*         <tbody> *@
+            @*         <tr> *@
+            @*             <td>ORD12345</td> *@
+            @*             <td>February 10, 2023</td> *@
+            @*             <td>@string.Format("{0:N0}đ", 200000)</td> *@
+            @*             <td> *@
+            @*                 <span class="status status--shipped"> *@
+            @*                     Shipped *@
+            @*                 </span> *@
+            @*             </td> *@
+            @*             <td><a href="/Order/Details/ORD12345" class="btn btn--primary btn--rounded">View Details</a> *@
+            @*             </td> *@
+            @*         </tr> *@
+            @*         <tr> *@
+            @*             <td>ORD67890</td> *@
+            @*             <td>March 15, 2023</td> *@
+            @*             <td>@string.Format("{0:N0}đ", 200000)</td> *@
+            @*             <td> *@
+            @*                 <span class="status status--delivered"> *@
+            @*                     Delivered *@
+            @*                 </span> *@
+            @*             </td> *@
+            @*             <td><a href="/Order/Details/ORD67890" class="btn btn--primary btn--rounded">View Details</a> *@
+            @*             </td> *@
+            @*         </tr> *@
+            @*         <tr> *@
+            @*             <td>ORD11223</td> *@
+            @*             <td>April 25, 2023</td> *@
+            @*             <td>@string.Format("{0:N0}đ", 200000)</td> *@
+            @*             <td> *@
+            @*                 <span class="status status--pending"> *@
+            @*                     Pending *@
+            @*                 </span> *@
+            @*             </td> *@
+            @*             <td><a href="/Order/Details/ORD11223" class="btn btn--primary btn--rounded">View Details</a> *@
+            @*             </td> *@
+            @*         </tr> *@
+            @*         </tbody> *@
+            @*     </table> *@
+            @* </div> *@
+            <div class="order-container">
+                <!-- Header Section -->
+                <div class="order-header">
+                    <div class="shop-info">
+                        <span class="mall-badge">ORD12345</span>
+                        <span class="shop-name">February 10, 2023</span>
+                    </div>
+                    <div class="shop-actions">
+                        <span class="status-completed">Delivered</span>
+                    </div>
+                </div>
+
+                <!-- Product List -->
+                <div class="product-list">
+                    <!-- Product Item -->
+                    @foreach (var product in likedProducts)
+                    {
+                        <div class="product-item">
+                            <img class="product-image" src="@product.Img_url" alt="Product Image"/>
+                            <div class="product-info">
+                                <div class="product-title">
+                                    @product.Name
+                                </div>
+                                <div class="product-details">@product.Type</div>
+                                <div class="product-quantity">x1</div>
+                            </div>
+                            <div class="product-pricing">
+                                <span class="price">@string.Format("{0:N0}đ", product.Price)</span>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+                <div class="order-total">
+                    <span>Thành tiền:</span>
+                    <span class="total-price">255.848</span>
+                </div>
             </div>
+
         </div>
 
         <div id="favourites" class="content-section" style="display:none;">
@@ -253,7 +292,7 @@
 
                 <!-- Add New Address -->
                 <div class="add-address">
-                    <button class="btn btn--primary btn--rounded">
+                    <button class="btn btn--primary btn--rounded" onclick="showModal('add-address-modal')">
                         <img src="~/assets/icons/add.svg" alt="Add" class="icon"> Add New Address
                     </button>
                 </div>
@@ -261,6 +300,36 @@
         </div>
 
     </div>
+    <div id="add-address-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('add-address-modal')">&times;</span>
+            <h2>Add New Address</h2>
+            <form id="add-address-form">
+                <div class="form-group">
+                    <label for="address-type">Address Type</label>
+                    <input type="text" id="address-type" name="addressType" placeholder="e.g., Home, Office" required>
+                </div>
+                <div class="form-group">
+                    <label for="address-line">Address</label>
+                    <textarea id="address-line" name="addressLine" placeholder="Enter full address" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" name="city" placeholder="Enter city" required>
+                </div>
+                <div class="form-group">
+                    <label for="state">State</label>
+                    <input type="text" id="state" name="state" placeholder="Enter state" required>
+                </div>
+                <div class="form-group">
+                    <label for="zip-code">ZIP Code</label>
+                    <input type="text" id="zip-code" name="zipCode" placeholder="Enter ZIP code" required>
+                </div>
+                <button type="button" onclick="saveNewAddress()" class="btn">Save Address</button>
+            </form>
+        </div>
+    </div>
+
 </div>
 
 <script>
@@ -341,6 +410,35 @@
             };
             reader.readAsDataURL(file);
         }
+    }
+
+    function showModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.style.display = "block";
+    }
+
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.style.display = "none";
+    }
+
+    function saveNewAddress() {
+        const form = document.getElementById('add-address-form');
+        const formData = new FormData(form);
+
+        const newAddress = {
+            addressType: formData.get('addressType'),
+            addressLine: formData.get('addressLine'),
+            city: formData.get('city'),
+            state: formData.get('state'),
+            zipCode: formData.get('zipCode'),
+        };
+
+        // Optionally, send newAddress to the server using AJAX or update the DOM
+        console.log('New Address:', newAddress);
+
+        // Close the modal after saving
+        closeModal('add-address-modal');
     }
 
 </script>
