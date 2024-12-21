@@ -1,6 +1,7 @@
 ﻿@model grocerymart.ViewModel.CartViewModel
 @{
     var subtotal = Model.ProducsInCart.Sum(product => product.Price * product.Quantity);
+    var totalItems = Model.ProducsInCart.Count;
 }
 <link rel="stylesheet" href="~/css/checkout.css" asp-append-version="true">
 
@@ -87,12 +88,22 @@
                                 </div>
                                 <div class="cart-info__row">
                                     <span>Shipping:</span>
-                                    <span>@string.Format("{0:N0}đ", 30000)</span>
+                                    <span>
+                                @{
+                                            var shipCost = subtotal == 0 ? 0 : 30000;
+                                            @string.Format("{0:N0}đ", shipCost);
+                                        }
+                                </span>
                                 </div>
                                 <div class="cart-info__separate"></div>
                                 <div class="cart-info__row cart-info__row--bold">
                                     <span>Total:</span>
-                                    <span>@string.Format("{0:N0}đ", subtotal + 30000)</span>
+                                    <span>
+                                @{
+                                            var total = subtotal == 0 ? 0 : subtotal + 30000;
+                                            @string.Format("{0:N0}đ", total);
+                                        }
+                                </span>
                                 </div>
                             </div>
                         </div>
@@ -111,12 +122,25 @@
                     </div>
                     <div class="cart-info__row">
                         <span>Shipping</span>
-                        <span>@string.Format("{0:N0}đ", 30000)</span>
+                        <span>
+                            
+                            @{
+                                var shippingCost = subtotal == 0 ? 0 : 30000;
+                                @string.Format("{0:N0}đ", shippingCost)
+                                ;
+                            }
+                        </span>
                     </div>
                     <div class="cart-info__separate"></div>
                     <div class="cart-info__row">
                         <span>Estimated Total</span>
-                        <span>@string.Format("{0:N0}đ", subtotal + 30000)</span>
+                        <span>
+                    @{
+                                var estimatedTotal = subtotal == 0 ? 0 : subtotal + 30000;
+                                @string.Format("{0:N0}đ", estimatedTotal)
+                                ;
+                            }
+                     </span>
                     </div>
                     <a asp-action="Index" asp-controller="Shipping"
                        class="cart-info__next-btn btn btn--primary btn--rounded">

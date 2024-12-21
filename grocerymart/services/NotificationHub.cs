@@ -23,4 +23,10 @@ public class NotificationHub : Hub
     {
         await Clients.All.SendAsync("CartProductsChanged");
     }
+
+    // add new address
+    public async Task NotifyAddressAdded()
+    {
+        await Clients.All.SendAsync("AddressAdded");
+    }
 }

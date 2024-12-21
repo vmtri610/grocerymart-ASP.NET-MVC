@@ -13,6 +13,33 @@
     {
         likedProducts = JsonConvert.DeserializeObject<List<ProductResponseModel>>(listLikedProducts);
     }
+
+    var listAddresses = Context.Session.GetString("Addresses");
+    var addresses = new List<AddressModel>();
+    if (!string.IsNullOrEmpty(listAddresses))
+    {
+        addresses = JsonConvert.DeserializeObject<List<AddressModel>>(listAddresses);
+    }
+
+    // order history
+    var orderHistory = Context.Session.GetString("OrderHistory");
+    var orders = new List<OrderHistoryResponseModel>();
+    if (!string.IsNullOrEmpty(orderHistory))
+    {
+        orders = JsonConvert.DeserializeObject<List<OrderHistoryResponseModel>>(orderHistory);
+    }
+
+    // Nhóm các sản phẩm theo ID
+    var groupedOrders = orders
+        .GroupBy(p => p.Id)
+        .Select(g => new
+        {
+            OrderId = g.Key,
+            g.First().CreatedAt,
+            TotalAmount = g.Sum(x => x.Quantity * x.Price), // Tính tổng tiền theo số lượng và giá
+            Products = g.ToList() // Danh sách sản phẩm thuộc đơn hàng này
+        })
+        .ToList();
 }
 
 <link rel="stylesheet" href="~/css/profile.css"/>
@@ -113,81 +140,129 @@
             <!-- Address Section -->
             <div class="section" id="address-section">
                 <h3>Address</h3>
-                <div class="section-content">
-                    <div class="info-grid">
-                        <div class="info-item">
-                            <label>Country</label>
-                            <span id="country-text">United Kingdom</span>
-                            <input type="text" id="country-input" class="editable-field" value="United Kingdom"
-                                   style="display: none;">
+                @foreach (var address in addresses.Take(1))
+                {
+                    <div class="section-content">
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <label>Address</label>
+                                <span id="country-text">@address.Address</span>
+                                <input type="text" id="country-input" class="editable-field" value="@address.Address"
+                                       style="display: none;">
+                            </div>
+                            <div class="info-item">
+                                <label>Country</label>
+                                <span id="city-text">@address.City</span>
+                                <input type="text" id="city-input" class="editable-field" value="@address.City"
+                                       style="display: none;">
+                            </div>
                         </div>
-                        <div class="info-item">
-                            <label>City/State</label>
-                            <span id="city-text">Leeds, East London</span>
-                            <input type="text" id="city-input" class="editable-field" value="Leeds, East London"
-                                   style="display: none;">
-                        </div>
+                        <button class="edit-button" onclick="toggleEdit('address-section')">Edit</button>
+                        <button class="save-button" style="display: none;" onclick="saveChanges('address-section')">Save
+                        </button>
                     </div>
-                    <button class="edit-button" onclick="toggleEdit('address-section')">Edit</button>
-                    <button class="save-button" style="display: none;" onclick="saveChanges('address-section')">Save
-                    </button>
-                </div>
+                }
+
             </div>
         </div>
 
 
         <div id="history" class="content-section" style="display:none;">
             <h2>Order History</h2>
-            <div class="orders-table-wrapper">
-                <table class="orders-table">
-                    <thead>
-                    <tr>
-                        <th>Order ID</th>
-                        <th>Date</th>
-                        <th>Total</th>
-                        <th>Status</th>
-                        <th>Action</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>ORD12345</td>
-                        <td>February 10, 2023</td>
-                        <td>@string.Format("{0:N0}đ", 200000)</td>
-                        <td>
-                            <span class="status status--shipped">
-                                Shipped
-                            </span>
-                        </td>
-                        <td><a href="/Order/Details/ORD12345" class="btn btn--primary btn--rounded">View Details</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>ORD67890</td>
-                        <td>March 15, 2023</td>
-                        <td>@string.Format("{0:N0}đ", 200000)</td>
-                        <td>
-                            <span class="status status--delivered">
-                                Delivered
-                            </span>
-                        </td>
-                        <td><a href="/Order/Details/ORD67890" class="btn btn--primary btn--rounded">View Details</a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>ORD11223</td>
-                        <td>April 25, 2023</td>
-                        <td>@string.Format("{0:N0}đ", 200000)</td>
-                        <td>
-                            <span class="status status--pending">
-                                Pending
-                            </span>
-                        </td>
-                        <td><a href="/Order/Details/ORD11223" class="btn btn--primary btn--rounded">View Details</a>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
+            @* <div class="orders-table-wrapper"> *@
+            @*     <table class="orders-table"> *@
+            @*         <thead> *@
+            @*         <tr> *@
+            @*             <th>Order ID</th> *@
+            @*             <th>Date</th> *@
+            @*             <th>Total</th> *@
+            @*             <th>Status</th> *@
+            @*             <th>Action</th> *@
+            @*         </tr> *@
+            @*         </thead> *@
+            @*         <tbody> *@
+            @*         <tr> *@
+            @*             <td>ORD12345</td> *@
+            @*             <td>February 10, 2023</td> *@
+            @*             <td>@string.Format("{0:N0}đ", 200000)</td> *@
+            @*             <td> *@
+            @*                 <span class="status status--shipped"> *@
+            @*                     Shipped *@
+            @*                 </span> *@
+            @*             </td> *@
+            @*             <td><a href="/Order/Details/ORD12345" class="btn btn--primary btn--rounded">View Details</a> *@
+            @*             </td> *@
+            @*         </tr> *@
+            @*         <tr> *@
+            @*             <td>ORD67890</td> *@
+            @*             <td>March 15, 2023</td> *@
+            @*             <td>@string.Format("{0:N0}đ", 200000)</td> *@
+            @*             <td> *@
+            @*                 <span class="status status--delivered"> *@
+            @*                     Delivered *@
+            @*                 </span> *@
+            @*             </td> *@
+            @*             <td><a href="/Order/Details/ORD67890" class="btn btn--primary btn--rounded">View Details</a> *@
+            @*             </td> *@
+            @*         </tr> *@
+            @*         <tr> *@
+            @*             <td>ORD11223</td> *@
+            @*             <td>April 25, 2023</td> *@
+            @*             <td>@string.Format("{0:N0}đ", 200000)</td> *@
+            @*             <td> *@
+            @*                 <span class="status status--pending"> *@
+            @*                     Pending *@
+            @*                 </span> *@
+            @*             </td> *@
+            @*             <td><a href="/Order/Details/ORD11223" class="btn btn--primary btn--rounded">View Details</a> *@
+            @*             </td> *@
+            @*         </tr> *@
+            @*         </tbody> *@
+            @*     </table> *@
+            @* </div> *@
+            <div class="order-container">
+                <!-- Header Section -->
+                @foreach (var order in groupedOrders)
+                {
+                    // Hiển thị thông tin chung của đơn hàng
+                    <div class="order-container">
+                        <div class="order-header">
+                            <div class="shop-info">
+                                <span class="mall-badge">@order.OrderId</span>
+                                <span
+                                    class="shop-name">@DateTime.Parse(order.CreatedAt).ToLocalTime().ToString("dd/MM/yyyy HH:mm:ss")</span>
+                            </div>
+                            <div class="shop-actions">
+                                <span class="status-completed">Delivered</span>
+                            </div>
+                        </div>
+
+                        <!-- Hiển thị danh sách sản phẩm -->
+                        <div class="product-list">
+                            @foreach (var product in order.Products)
+                            {
+                                <div class="product-item">
+                                    <img class="product-image" src="@product.ImgUrl" alt="@product.Name"/>
+                                    <div class="product-info">
+                                        <div class="product-title">@product.Name</div>
+                                        <div class="product-details">x @product.Quantity</div>
+                                    </div>
+                                    <div class="product-pricing">
+                                        <span class="price">@string.Format("{0:N0}đ", product.Price)</span>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+
+                        <!-- Hiển thị tổng tiền -->
+                        <div class="order-total">
+                            <span>Thành tiền:</span>
+                            <span class="total-price">@string.Format("{0:N0}đ", order.TotalAmount)</span>
+                        </div>
+                    </div>
+                }
+
+
             </div>
         </div>
 
@@ -202,7 +277,10 @@
                             <h3 class="favourite-item__title">@product.Name</h3>
                             <p class="favourite-item__price">@string.Format("{0:N0}đ", product.Price)</p>
                             <div class="favourite-item__actions">
-                                <button class="btn btn--primary btn--rounded">Add to Cart</button>
+                                <button class="btn btn--primary btn--rounded add-to-cart" data-product-id="@product.Id">
+                                    Add to
+                                    Cart
+                                </button>
                                 @* <button class="btn btn--secondary btn--rounded"> *@
                                 @*     <img src="~/assets/icons/heart-2.svg" alt="Save" class="icon"> Save *@
                                 @* </button> *@
@@ -220,41 +298,27 @@
         <div id="addresses" class="content-section" style="display:none;">
             <h2>Addresses</h2>
             <div class="addresses-list">
-                <!-- Address 1 -->
-                <div class="address-card">
-                    <div class="address-card__details">
-                        <h3 class="address-card__type">Home Address</h3>
-                        <p class="address-card__text">123 Main St, Springfield, IL, USA</p>
+                @foreach (var address in addresses)
+                {
+                    <div class="address-card">
+                        <div class="address-card__details">
+                            <h3 class="address-card__type">@address.Type</h3>
+                            <p class="address-card__text">@address.Address, @address.City, @address.State</p>
+                        </div>
+                        <div class="address-card__actions">
+                            <button class="btn btn--secondary btn--rounded">
+                                <img src="~/assets/icons/edit.svg" alt="Edit" class="icon"> Edit
+                            </button>
+                            <button class="btn btn--danger btn--rounded">
+                                <img src="~/assets/icons/trash.svg" alt="Delete" class="icon"> Delete
+                            </button>
+                        </div>
                     </div>
-                    <div class="address-card__actions">
-                        <button class="btn btn--secondary btn--rounded">
-                            <img src="~/assets/icons/edit.svg" alt="Edit" class="icon"> Edit
-                        </button>
-                        <button class="btn btn--danger btn--rounded">
-                            <img src="~/assets/icons/trash.svg" alt="Delete" class="icon"> Delete
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Address 2 -->
-                <div class="address-card">
-                    <div class="address-card__details">
-                        <h3 class="address-card__type">Shipping Address</h3>
-                        <p class="address-card__text">456 Oak St, Springfield, IL, USA</p>
-                    </div>
-                    <div class="address-card__actions">
-                        <button class="btn btn--secondary btn--rounded">
-                            <img src="~/assets/icons/edit.svg" alt="Edit" class="icon"> Edit
-                        </button>
-                        <button class="btn btn--danger btn--rounded">
-                            <img src="~/assets/icons/trash.svg" alt="Delete" class="icon"> Delete
-                        </button>
-                    </div>
-                </div>
+                }
 
                 <!-- Add New Address -->
                 <div class="add-address">
-                    <button class="btn btn--primary btn--rounded">
+                    <button class="btn btn--primary btn--rounded" onclick="showModal('add-address-modal')">
                         <img src="~/assets/icons/add.svg" alt="Add" class="icon"> Add New Address
                     </button>
                 </div>
@@ -262,7 +326,37 @@
         </div>
 
     </div>
+    <div id="add-address-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" onclick="closeModal('add-address-modal')">&times;</span>
+            <h2>Add New Address</h2>
+            <form id="add-address-form" asp-action="AddAddress" method="post">
+                <div class="form-group">
+                    <label for="address-type">Address Type</label>
+                    <input type="text" id="address-type" name="type" placeholder="e.g., Home, Office" required>
+                </div>
+                <div class="form-group">
+                    <label for="address-line">Address</label>
+                    <input id="address-line" name="address" placeholder="Enter full address" required></input>
+                </div>
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <input type="text" id="city" name="city" placeholder="Enter city" required>
+                </div>
+                <div class="form-group">
+                    <label for="state">State</label>
+                    <input type="text" id="state" name="state" placeholder="Enter state" required>
+                </div>
+                <div class="form-group">
+                    <label for="zip-code">ZIP Code</label>
+                    <input type="text" id="zip-code" name="zipCode" placeholder="Enter ZIP code" required>
+                </div>
+                <button type="submit" onclick="saveNewAddress()" class="save-button save-address">Save Address</button>
+            </form>
+        </div>
+    </div>
 </div>
+<div id="snackbar">Item added to cart successfully!</div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.0/signalr.min.js"></script>
 <script>
@@ -345,6 +439,43 @@
         }
     }
 
+    function showModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.style.display = "block";
+
+        // Close the modal if clicked outside the content
+        window.addEventListener("click", function handleOutsideClick(event) {
+            if (event.target === modal) {
+                closeModal(modalId);
+                window.removeEventListener("click", handleOutsideClick); // Remove event listener after it's triggered
+            }
+        });
+    }
+
+    function closeModal(modalId) {
+        const modal = document.getElementById(modalId);
+        modal.style.display = "none";
+    }
+
+    function saveNewAddress() {
+        const form = document.getElementById('add-address-form');
+        const formData = new FormData(form);
+
+        const newAddress = {
+            addressType: formData.get('addressType'),
+            addressLine: formData.get('addressLine'),
+            city: formData.get('city'),
+            state: formData.get('state'),
+            zipCode: formData.get('zipCode'),
+        };
+
+        // Optionally, send newAddress to the server using AJAX or update the DOM
+        console.log('New Address:', newAddress);
+
+        // Close the modal after saving
+        closeModal('add-address-modal');
+    }
+
     // remove liked product
     document.querySelectorAll('.remove-product').forEach(button => {
         button.addEventListener('click', async (event) => {
@@ -369,22 +500,101 @@
             favouriteItem.classList.add('favourite-item');
 
             favouriteItem.innerHTML = `
-                <img src="${product.img_url}" alt="${product.name}" class="favourite-item__thumb">
-                <div class="favourite-item__details">
-                    <h3 class="favourite-item__title">${product.name}</h3>
-                    <p class="favourite-item__price">${product.price}</p>
-                    <div class="favourite-item__actions">
-                        <button class="btn btn--primary btn--rounded">Add to Cart</button>
-                        <button class="btn btn--danger btn--rounded remove-product" data-product-id="${product.id}">
-                            <img src="./assets/icons/trash.svg" alt="Delete" class="icon"> Remove
-                        </button>
-                    </div>
+            <img src="${product.img_url}" alt="${product.name}" class="favourite-item__thumb">
+            <div class="favourite-item__details">
+                <h3 class="favourite-item__title">${product.name}</h3>
+                <p class="favourite-item__price">${product.price}</p>
+                <div class="favourite-item__actions">
+                    <button class="btn btn--primary btn--rounded add-to-cart"> Add to Cart</button>
+                    <button class="btn btn--danger btn--rounded remove-product" data-product-id="${product.id}">
+                        <img src="./assets/icons/trash.svg" alt="Delete" class="icon"> Remove
+                    </button>
                 </div>
-            `;
+            </div>
+        `;
 
             favouritesList.appendChild(favouriteItem);
         });
+
+        // Re-attach click event listeners to the remove buttons
+        document.querySelectorAll('.remove-product').forEach(button => {
+            button.addEventListener('click', async (event) => {
+                const productId = button.getAttribute('data-product-id');
+                const response = await fetch(`/Profile/RemoveFromFavourite?product_id=${productId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                // Handle response if needed
+            });
+        });
+
+        // Re-attach click event listeners to the add-to-cart buttons
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', async (event) => {
+                const productId = button.getAttribute('data-product-id');
+                const response = await fetch(`/Profile/AddToCart?id=${productId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                showSnackbar();
+            });
+        });
     });
+
+    connection.on("AddressAdded", (addresses) => {
+        // Locate the container to update
+        const addressesList = document.querySelector('.addresses-list');
+        addressesList.innerHTML = '';
+
+        // Update the list of liked products
+        addresses.forEach(address => {
+            const addressCard = document.createElement('div');
+            addressCard.classList.add('address-card');
+
+            addressCard.innerHTML = `
+            <div class="address-card__details">
+                <h3 class="address-card__type">${address.type}</h3>
+                <p class="address-card__text">${address.address}, ${address.city}, ${address.state}, ${address.zipCode}</p>
+            </div>
+            <div class="address-card__actions">
+                <button class="btn btn--secondary btn--rounded">
+                    <img src="./assets/icons/edit.svg" alt="Edit" class="icon"> Edit
+                </button>
+                <button class="btn btn--danger btn--rounded">
+                    <img src="./assets/icons/trash.svg" alt="Delete" class="icon"> Delete
+                </button>
+            </div>
+        `;
+
+            addressesList.appendChild(addressCard);
+        });
+    });
+
+    // add to cart
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', async (event) => {
+            const productId = button.getAttribute('data-product-id');
+            const response = await fetch(`/Profile/AddToCart?id=${productId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            });
+            showSnackbar();
+        });
+    });
+
+    function showSnackbar() {
+        const snackbar = document.getElementById("snackbar");
+        snackbar.className = "show";
+        setTimeout(function () {
+            snackbar.className = snackbar.className.replace("show", "");
+        }, 3000);
+    }
 
 </script>
 

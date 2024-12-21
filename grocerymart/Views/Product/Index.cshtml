@@ -148,8 +148,8 @@
 
         </div>
     </div>
-
 </div>
+<div id="snackbar">Item added to cart successfully!</div>
 
 <script>
     const redHeartIcon = '@Url.Content("~/assets/icons/red-heart.svg")';
@@ -207,5 +207,17 @@
                 quantity: 1,
             }),
         });
+
+        if (response.ok) {
+            showSnackbar();
+        }
     });
+
+    function showSnackbar() {
+        const snackbar = document.getElementById("snackbar");
+        snackbar.className = "show";
+        setTimeout(function () {
+            snackbar.className = snackbar.className.replace("show", "");
+        }, 3000);
+    }
 </script>

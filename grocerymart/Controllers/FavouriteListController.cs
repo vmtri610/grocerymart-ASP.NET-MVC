@@ -83,4 +83,40 @@ public class FavouriteListController : Controller
             return RedirectToAction("Index", "Home");
         }
     }
+
+    public async Task<IActionResult> AddToCart(string id)
+    {
+        try
+        {
+            var userId = HttpContext.Session.GetString("UserId");
+
+            await _supabaseClient.Rpc("add_product_to_cart",
+                new Dictionary<string, object> { { "p_pro_id", id }, { "p_id", userId }, { "p_quantity", 1 } });
+
+            var countCartProductsResponse = await _supabaseClient.Rpc("count_products_in_cart",
+                new Dictionary<string, object> { { "p_id", userId } });
+
+            var countCartProducts = int.Parse(countCartProductsResponse.Content);
+            HttpContext.Session.SetInt32("CartItems", countCartProducts);
+
+            await _hubContext.Clients.All.SendAsync("ReceiveCartProducts", countCartProducts);
+
+            var result = await _supabaseClient.Rpc<List<CartItemResponseModel>>("get_products_in_cart",
+                new Dictionary<string, object> { { "p_id", userId } });
+
+            var cartViewModel = new CartViewModel
+            {
+                ProducsInCart = result
+            };
+
+            HttpContext.Session.SetString("CartItems", JsonConvert.SerializeObject(cartViewModel.ProducsInCart));
+            await _hubContext.Clients.All.SendAsync("CartProductsChanged", cartViewModel.ProducsInCart);
+
+            return RedirectToAction("Index", "Home");
+        }
+        catch (Exception e)
+        {
+            return RedirectToAction("Index", "Home");
+        }
+    }
 }

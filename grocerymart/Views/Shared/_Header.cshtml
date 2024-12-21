@@ -41,36 +41,36 @@
 
             <!-- Navbar -->
             <nav class="navbar">
-                <ul class="navbar__list">
-                    <li>
-                        <a href="" class="navbar__link"
-                        >Departments<img
-                                src="~/assets/icons/arrow-down.svg"
-                                alt=""
-                                class="navbar__arrow"
-                            /></a>
-                    </li>
-                    <li>
-                        <a href="" class="navbar__link"
-                        >Grocery
-                            <img
-                                src="~/assets/icons/arrow-down.svg"
-                                alt=""
-                                class="navbar__arrow"
-                            />
-                        </a>
-                    </li>
-                    <li>
-                        <a href="" class="navbar__link"
-                        >Beauty
-                            <img
-                                src="~/assets/icons/arrow-down.svg"
-                                alt=""
-                                class="navbar__arrow"
-                            />
-                        </a>
-                    </li>
-                </ul>
+                @* <ul class="navbar__list"> *@
+                @*     <li> *@
+                @*         <a href="" class="navbar__link" *@
+                @*         >Departments<img *@
+                @*                 src="~/assets/icons/arrow-down.svg" *@
+                @*                 alt="" *@
+                @*                 class="navbar__arrow" *@
+                @*             /></a> *@
+                @*     </li> *@
+                @*     <li> *@
+                @*         <a href="" class="navbar__link" *@
+                @*         >Grocery *@
+                @*             <img *@
+                @*                 src="~/assets/icons/arrow-down.svg" *@
+                @*                 alt="" *@
+                @*                 class="navbar__arrow" *@
+                @*             /> *@
+                @*         </a> *@
+                @*     </li> *@
+                @*     <li> *@
+                @*         <a href="" class="navbar__link" *@
+                @*         >Beauty *@
+                @*             <img *@
+                @*                 src="~/assets/icons/arrow-down.svg" *@
+                @*                 alt="" *@
+                @*                 class="navbar__arrow" *@
+                @*             /> *@
+                @*         </a> *@
+                @*     </li> *@
+                @* </ul> *@
             </nav>
 
             @if (!string.IsNullOrEmpty(user?.FullName))
@@ -114,13 +114,6 @@
                                                 </article>
                                             </div>
                                         }
-                                    </div>
-                                    <div class="act-dropdown__separate"></div>
-                                    <div class="act-dropdown__checkout">
-                                        <a asp-action="Index" asp-controller="Shipping"
-                                           class="btn btn--primary btn--rounded act-dropdown__checkout-btn">
-                                            Check Out All
-                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -169,12 +162,23 @@
                                         </div>
                                         <div class="act-dropdown__row">
                                             <span class="act-dropdown__label">Shipping</span>
-                                            <span class="act-dropdown__value">@string.Format("{0:N0}đ", 30000)</span>
+                                            <span class="act-dropdown__value">
+                                        @{
+                                                    var shippingCost = subTotal == null ? 0 : 30000;
+                                                    @string.Format("{0:N0}đ", shippingCost)
+                                                    ;
+                                                }
+                                         </span>
                                         </div>
                                         <div class="act-dropdown__row act-dropdown__row--bold">
                                             <span class="act-dropdown__label">Total Price</span>
-                                            <span
-                                                class="act-dropdown__value">@string.Format("{0:N0}đ", subTotal + 30000)</span>
+                                            <span class="act-dropdown__value total-price">
+                                         @{
+                                                    var totalPrice = subTotal == null ? 0 : subTotal + 30000;
+                                                    @string.Format("{0:N0}đ", totalPrice)
+                                                    ;
+                                                }
+                                        </span>
                                         </div>
                                     </div>
                                     <div class="act-dropdown__checkout">
@@ -323,9 +327,9 @@
                             <img src="${product.img}" alt="" class="cart-preview-item__thumb">
                         </div>
                         <h3 class="cart-preview-item__title">${product.name}</h3>
-                        <p class="cart-preview-item__price">${new Intl.NumberFormat('en-US', {
+                        <p class="cart-preview-item__price">${new Intl.NumberFormat('vi-VN', {
                 style: 'currency',
-                currency: 'USD'
+                currency: 'VND'
             }).format(product.price)}</p>
                     </article>
                 </div>
@@ -333,6 +337,27 @@
 
             // Append to the container
             cartPreviewContainer.insertAdjacentHTML('beforeend', productHTML);
+
+            // Update subtotal
+            const subTotalElement = document.querySelector('.act-dropdown__value');
+            if (subTotalElement) {
+                const subTotal = products.reduce((acc, product) => acc + (product.price * product.quantity), 0);
+                subTotalElement.textContent = new Intl.NumberFormat('vi-VN', {
+                    style: 'currency',
+                    currency: 'VND'
+                }).format(subTotal);
+            }
+
+            // Update total price
+            const totalPriceElement = document.querySelector('.total-price');
+            if (totalPriceElement) {
+                const subTotal = products.reduce((acc, product) => acc + (product.price * product.quantity), 0);
+                const totalPrice = subTotal + 30000;
+                totalPriceElement.textContent = new Intl.NumberFormat('vi-VN', {
+                    style: 'currency',
+                    currency: 'VND'
+                }).format(totalPrice);
+            }
         });
     });
 </script>

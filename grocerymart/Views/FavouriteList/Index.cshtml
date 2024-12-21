@@ -7,18 +7,10 @@
         <div class="cart-info">
             <h1 class="cart-info__heading">Favourite List</h1>
             <p class="cart-info__desc">@Model.ProductLiked.Count items</p>
-            <div class="cart-info__check-all">
-                <label class="cart-info__checkbox">
-                    <input type="checkbox" name="shipping-adress" class="cart-info__checkbox-input checked">
-                </label>
-            </div>
             <div class="cart-info__list">
                 @foreach (var product in Model.ProductLiked)
                 {
                     <div class="cart-item">
-                        <label class="cart-info__checkbox">
-                            <input type="checkbox" name="shipping-adress" class="cart-info__checkbox-input" checked="">
-                        </label>
                         <a href="@Url.Action("Index", "Product", new { id = product.Id })">
                             <img src="@Url.Content(product.Img_url)" alt="" class="cart-item__thumb"/>
                         </a>
@@ -60,9 +52,10 @@
                             </div>
                             <div class="cart-item__content-right">
                                 <p class="cart-item__total-price">@string.Format("{0:N0}đ"
-                                                                      , product.Price)</p>
-                                <button class="cart-item__checkout-btn btn btn--primary btn--rounded">
-                                    Check Out
+                                        , product.Price)</p>
+                                <button class="cart-item__checkout-btn btn btn--primary btn--rounded"
+                                        data-product-id="@product.Id">
+                                    Add to cart
                                 </button>
                             </div>
                         </div>
@@ -71,27 +64,21 @@
             </div>
 
             <div class="cart-info__bottom d-md-none">
-                <div class="cart-row">
-                    <div class="cart-info__row cart-info__row-md--block">
-                        <div class="cart-info__continue">
-                            <a class="cart-info__continue-link" asp-action="Index" asp-controller="Home">
-                                <img
-                                    class="cart-info__continue-icon icon"
-                                    src="~/assets/icons/arrow-down-2.svg"
-                                    alt=""/>
-                                Continue Shopping
-                            </a>
-                        </div>
-                        <a asp-action="Index" asp-controller="Checkout"
-                           class="cart-info__checkout-all btn btn--primary btn--rounded">
-                            All Check Out
-                        </a>
-                    </div>
+                <div class="cart-info__continue">
+                    <a class="cart-info__continue-link" asp-action="Index" asp-controller="Home">
+                        <img
+                            class="cart-info__continue-icon icon"
+                            src="~/assets/icons/arrow-down-2.svg"
+                            alt=""/>
+                        Continue Shopping
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<div id="snackbar">Item added to cart successfully!</div>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/microsoft-signalr/6.0.0/signalr.min.js"></script>
 <script>
@@ -119,9 +106,6 @@
             const cartItem = document.createElement('div');
             cartItem.classList.add('cart-item');
             cartItem.innerHTML = `
-                <label class="cart-info__checkbox">
-                    <input type="checkbox" name="shipping-adress" class="cart-info__checkbox-input" checked>
-                </label>
                     <a href="/Product/Index/${product.id}" class="cart-item__link">
 
                     <img src="${product.img_url}" alt="" class="cart-item__thumb"/>
@@ -157,6 +141,19 @@
             `;
             cartPreviewContainer.appendChild(cartItem);
         });
+
+        // Re-attach event listeners
+        document.querySelectorAll('.cart-item__ctrl-btn').forEach(button => {
+            button.addEventListener('click', async (event) => {
+                const productId = button.getAttribute('data-product-id');
+                const response = await fetch(`/FavouriteList/RemoveFromFavourite?product_id=${productId}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    }
+                });
+            });
+        });
     });
 
     connection.on("ReceiveLikedProducts", (count) => {
@@ -165,5 +162,30 @@
             likedProductsElement.textContent = `${count} items`;
         }
     });
+
+    // add to cart
+    document.querySelectorAll('.cart-item__checkout-btn').forEach(button => {
+        button.addEventListener('click', async (event) => {
+            const productId = button.getAttribute('data-product-id');
+            const response = await fetch(`/FavouriteList/AddToCart?id=${productId}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                }
+            });
+
+            if (response.ok) {
+                showSnackbar();
+            }
+        });
+    });
+
+    function showSnackbar() {
+        const snackbar = document.getElementById("snackbar");
+        snackbar.className = "show";
+        setTimeout(function () {
+            snackbar.className = snackbar.className.replace("show", "");
+        }, 3000);
+    }
 
 </script>

@@ -4,6 +4,7 @@ using grocerymart.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SignalR;
 using Newtonsoft.Json;
+using Supabase.Postgrest;
 using Client = Supabase.Client;
 
 namespace grocerymart.Controllers;
@@ -35,6 +36,18 @@ public class ShippingController : Controller
             {
                 ProducsInCart = result
             };
+
+            var addresses = await _supabaseClient.From<AddressModel>().Select("*")
+                .Filter("user_id", Constants.Operator.Equals, userId).Get();
+
+            var viewModelAddress = new AddressViewModel
+            {
+                Addresses = addresses.Models
+            };
+
+            HttpContext.Session.SetString("Addresses", JsonConvert.SerializeObject(viewModelAddress.Addresses));
+
+            await _hubContext.Clients.All.SendAsync("AddressAdded", viewModelAddress.Addresses);
 
             return View(viewModel);
         }

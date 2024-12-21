@@ -10,9 +10,35 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b8f66a49-29fe-4c25-a330-b04f88b30cce" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.grocerymart/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/grocerymart/Models/AddressModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/grocerymart/Models/OrderHistoryModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/grocerymart/Models/OrderHistoryResponseModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/grocerymart/Models/OrderItemsModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/grocerymart/ViewModel/AddressModel.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/grocerymart/ViewModel/OrderHistoryModel.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.grocerymart/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.grocerymart/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Controllers/FavouriteListController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Controllers/FavouriteListController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Controllers/PaymentController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Controllers/PaymentController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grocerymart/Controllers/ProfileController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Controllers/ProfileController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Controllers/ShippingController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Controllers/ShippingController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Views/Checkout/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Checkout/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Views/FavouriteList/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/FavouriteList/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Home/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Views/Login/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Login/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Views/Payment/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Payment/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Views/Product/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Product/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/grocerymart/Views/Profile/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Profile/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Views/Shared/_Header.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Shared/_Header.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/Views/Shipping/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/Views/Shipping/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/services/NotificationHub.cs" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/services/NotificationHub.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/checkout.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/checkout.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/favourite_list.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/favourite_list.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/footer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/header.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/product.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/product.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/grocerymart/wwwroot/css/profile.css" beforeDir="false" afterPath="$PROJECT_DIR$/grocerymart/wwwroot/css/profile.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,26 +91,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.grocerymart: IIS Express.executor&quot;: &quot;Debug&quot;,
-    &quot;.NET Launch Settings Profile.grocerymart: http.executor&quot;: &quot;Run&quot;,
-    &quot;.NET Launch Settings Profile.grocerymart: https.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\vmtri\\AppData\\Roaming\\npm\\node_modules\\prettier&quot;,
-    &quot;rider.code.cleanup.on.save&quot;: &quot;true&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.grocerymart: IIS Express.executor": "Debug",
+    ".NET Launch Settings Profile.grocerymart: http.executor": "Run",
+    ".NET Launch Settings Profile.grocerymart: https.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "Merging master",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\vmtri\\AppData\\Roaming\\npm\\node_modules\\prettier",
+    "rider.code.cleanup.on.save": "true",
+    "settings.editor.selected.configurable": "HotReloadSettingsPage",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.grocerymart: https">
     <configuration name="grocerymart: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/grocerymart/grocerymart.csproj" />

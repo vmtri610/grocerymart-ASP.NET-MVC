@@ -1,6 +1,15 @@
-﻿@model grocerymart.ViewModel.CartViewModel
+﻿@using Newtonsoft.Json
+@model grocerymart.ViewModel.CartViewModel
+
 @{
     var subtotal = Model.ProducsInCart.Sum(product => product.Price * product.Quantity);
+
+    var listAddresses = Context.Session.GetString("Addresses");
+    var addresses = new List<AddressModel>();
+    if (!string.IsNullOrEmpty(listAddresses))
+    {
+        addresses = JsonConvert.DeserializeObject<List<AddressModel>>(listAddresses);
+    }
 }
 <link rel="stylesheet" href="~/css/shipping.css" asp-append-version="true">
 
@@ -30,85 +39,31 @@
                             @* </button> *@
                         </div>
                         <div class="user-address__list">
-                            <!-- Empty message -->
-                            <!-- <p class="user-address__message">
-                                Not address yet.
-                                <a class="user-address__link js-toggle" href="#!" toggle-target="#add-new-address">Add a new address</a>
-                            </p> -->
+                            @foreach (var address in addresses)
+                            {
+                                <article class="address-card">
+                                    <div class="address-card__left">
+                                        <div class="address-card__choose">
+                                            <label class="cart-info__checkbox">
+                                                <input
+                                                    type="radio"
+                                                    name="shipping-adress"
+                                                    class="cart-info__checkbox-input"
+                                                />
+                                            </label>
+                                        </div>
+                                        <div class="address-card__info">
+                                            <h3 class="address-card__title">@address.Type</h3>
+                                            <p class="address-card__desc">@address.Address, @address.City, @address.State</p>
+                                            <ul class="address-card__list">
+                                                <li class="address-card__list-item">Shipping</li>
+                                                <li class="address-card__list-item">Delivery from store</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </article>
+                            }
 
-                            <!-- Address card 1 -->
-                            <article class="address-card">
-                                <div class="address-card__left">
-                                    <div class="address-card__choose">
-                                        <label class="cart-info__checkbox">
-                                            <input
-                                                type="radio"
-                                                name="shipping-adress"
-                                                checked
-                                                class="cart-info__checkbox-input"
-                                            />
-                                        </label>
-                                    </div>
-                                    <div class="address-card__info">
-                                        <h3 class="address-card__title">Imran Khan</h3>
-                                        <p class="address-card__desc">
-                                            Museum of Rajas, Sylhet Sadar, Sylhet 3100.
-                                        </p>
-                                        <ul class="address-card__list">
-                                            <li class="address-card__list-item">Shipping</li>
-                                            <li class="address-card__list-item">Delivery from store</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                @* <div class="address-card__right"> *@
-                                @*     <div class="address-card__ctrl"> *@
-                                @*         <button *@
-                                @*             class="cart-info__edit-btn js-toggle" *@
-                                @*             toggle-target="#add-new-address" *@
-                                @*         > *@
-                                @*             <img class="icon" src="./assets/icons/edit.svg" alt=""/> *@
-                                @*             Edit *@
-                                @*         </button> *@
-                                @*     </div> *@
-                                @* </div> *@
-                            </article>
-
-                            <!-- Address card 2 -->
-                            <article class="address-card">
-                                <div class="address-card__left">
-                                    <div class="address-card__choose">
-                                        <label class="cart-info__checkbox">
-                                            <input
-                                                type="radio"
-                                                name="shipping-adress"
-                                                class="cart-info__checkbox-input"
-                                            />
-                                        </label>
-                                    </div>
-                                    <div class="address-card__info">
-                                        <h3 class="address-card__title">Imran Khan</h3>
-                                        <p class="address-card__desc">
-                                            Al Hamra City (10th Floor), Hazrat Shahjalal Road, Sylhet,
-                                            Sylhet, Bangladesh
-                                        </p>
-                                        <ul class="address-card__list">
-                                            <li class="address-card__list-item">Shipping</li>
-                                            <li class="address-card__list-item">Delivery from store</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                @* <div class="address-card__right"> *@
-                                @*     <div class="address-card__ctrl"> *@
-                                @*         <button *@
-                                @*             class="cart-info__edit-btn js-toggle" *@
-                                @*             toggle-target="#add-new-address" *@
-                                @*         > *@
-                                @*             <img class="icon" src="./assets/icons/edit.svg" alt=""/> *@
-                                @*             Edit *@
-                                @*         </button> *@
-                                @*     </div> *@
-                                @* </div> *@
-                            </article>
                         </div>
                     </div>
 

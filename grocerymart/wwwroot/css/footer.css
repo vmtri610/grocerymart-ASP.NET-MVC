@@ -166,3 +166,7 @@ ul.footer__list {
     color: #171c28;
     background: #ffb700;
 }
+
+.btn--primary:hover {
+    background: #ffa500;
+}
